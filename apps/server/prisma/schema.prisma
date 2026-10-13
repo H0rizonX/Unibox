@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  accountNo    String   @unique
+  firstName    String
+  lastName     String
+  username     String   @unique
+  email        String   @unique
+  phoneNumber  String   @default("")
+  passwordHash String
+  status       String   @default("active")
+  role         String   @default("user")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  profile       UserProfile?
+  account       UserAccount?
+  notifications UserNotifications?
+  invitesSent   UserInvite[] @relation("InvitedBy")
+}
+
+model Role {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  label       String
+  description String?
+  permissions String   @db.Text
+  isSystem    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model UserProfile {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  username      String?
+  displayEmail  String?
+  bio           String   @default("")
+  urls          String   @default("[]")
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserAccount {
+  id        String    @id @default(uuid())
+  userId    String    @unique
+  name      String    @default("")
+  dob       DateTime?
+  language  String    @default("zh")
+  updatedAt DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserNotifications {
+  id                  String  @id @default(uuid())
+  userId              String  @unique
+  type                String  @default("mentions")
+  mobile              Boolean @default(false)
+  communicationEmails Boolean @default(false)
+  socialEmails        Boolean @default(true)
+  marketingEmails     Boolean @default(false)
+  securityEmails      Boolean @default(true)
+  updatedAt           DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserInvite {
+  id          String   @id @default(uuid())
+  email       String
+  role        String
+  description String?
+  invitedById String
+  status      String   @default("pending")
+  createdAt   DateTime @default(now())
+
+  invitedBy User @relation("InvitedBy", fields: [invitedById], references: [id], onDelete: Cascade)
+}
+
+model Task {
+  id          String    @id
+  title       String
+  status      String
+  label       String
+  priority    String
+  assignee    String?
+  description String?
+  dueDate     DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Conversation {
+  id       String    @id @default(uuid())
+  fullName String
+  username String
+  title    String
+  avatar   String?
+  messages Message[]
+}
+
+model Message {
+  id             String   @id @default(uuid())
+  conversationId String
+  sender         String
+  message        String
+  timestamp      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+}
