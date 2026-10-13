@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express'
 import { ZodError } from 'zod'
-import { type FailOptions } from '../lib/api-response.js'
+import type { FailOptions } from '../lib/api-response.js'
 import { BizCode, resolveBizCode } from '../lib/biz-code.js'
 import { AppError } from '../lib/errors.js'
 

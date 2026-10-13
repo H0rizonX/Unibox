@@ -1,6 +1,7 @@
 import { Router } from 'express'
+import { type AuthRequest, authenticate } from '../middleware/auth.js'
 import { asyncHandler } from '../middleware/error-handler.js'
-import { authenticate, type AuthRequest } from '../middleware/auth.js'
+import * as authService from '../services/auth.service.js'
 import {
   changePasswordSchema,
   forgotPasswordSchema,
@@ -10,7 +11,6 @@ import {
   verifyEmailSchema,
   verifyResetOtpSchema,
 } from '../validators/schemas.js'
-import * as authService from '../services/auth.service.js'
 
 export const authRouter = Router()
 

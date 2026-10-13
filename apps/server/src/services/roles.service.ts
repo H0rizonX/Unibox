@@ -1,5 +1,5 @@
-import { prisma } from '../lib/prisma.js'
 import { badRequest, notFound } from '../lib/errors.js'
+import { prisma } from '../lib/prisma.js'
 
 export type RoleInput = {
   name: string

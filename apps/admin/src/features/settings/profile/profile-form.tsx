@@ -1,13 +1,11 @@
-import { useEffect } from 'react'
-import { z } from 'zod'
-import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import { useFieldArray, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as settingsApi from '@/api/settings'
-import { handleServerError } from '@/lib/handle-server-error'
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -20,6 +18,8 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { handleServerError } from '@/lib/handle-server-error'
+import { cn } from '@/lib/utils'
 
 const profileFormSchema = z.object({
   username: z
@@ -95,16 +95,16 @@ export function ProfileForm() {
             handleServerError(error)
           }
         })}
-        className='space-y-8'
+        className="space-y-8"
       >
         <FormField
           control={form.control}
-          name='username'
+          name="username"
           render={({ field }) => (
             <FormItem>
               <FormLabel>用户名</FormLabel>
               <FormControl>
-                <Input placeholder='shadcn' {...field} />
+                <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
                 这是您的公开显示名称，可以是真实姓名或昵称。每 30
@@ -116,15 +116,15 @@ export function ProfileForm() {
         />
         <FormField
           control={form.control}
-          name='email'
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormLabel>邮箱</FormLabel>
               <FormControl>
-                <Input placeholder='name@example.com' {...field} />
+                <Input placeholder="name@example.com" {...field} />
               </FormControl>
               <FormDescription>
-                您可以在 <Link to='/'>邮件设置</Link> 中管理已验证的邮箱地址。
+                您可以在 <Link to="/">邮件设置</Link> 中管理已验证的邮箱地址。
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -132,14 +132,14 @@ export function ProfileForm() {
         />
         <FormField
           control={form.control}
-          name='bio'
+          name="bio"
           render={({ field }) => (
             <FormItem>
               <FormLabel>简介</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder='介绍一下您自己'
-                  className='resize-none'
+                  placeholder="介绍一下您自己"
+                  className="resize-none"
                   {...field}
                 />
               </FormControl>
@@ -173,16 +173,16 @@ export function ProfileForm() {
             />
           ))}
           <Button
-            type='button'
-            variant='outline'
-            size='sm'
-            className='mt-2'
+            type="button"
+            variant="outline"
+            size="sm"
+            className="mt-2"
             onClick={() => append({ value: '' })}
           >
             添加链接
           </Button>
         </div>
-        <Button type='submit'>更新资料</Button>
+        <Button type="submit">更新资料</Button>
       </form>
     </Form>
   )

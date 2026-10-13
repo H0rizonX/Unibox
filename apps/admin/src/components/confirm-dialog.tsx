@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -9,6 +8,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 type ConfirmDialogProps = {
   open: boolean
@@ -45,7 +45,7 @@ export function ConfirmDialog(props: ConfirmDialogProps) {
   return (
     <AlertDialog {...actions}>
       <AlertDialogContent className={cn(className && className)}>
-        <AlertDialogHeader className='text-start'>
+        <AlertDialogHeader className="text-start">
           <AlertDialogTitle>{title}</AlertDialogTitle>
           <AlertDialogDescription asChild>
             <div>{desc}</div>

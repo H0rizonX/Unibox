@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react'
 import { getRouteApi } from '@tanstack/react-router'
 import {
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -10,10 +7,13 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from '@tanstack/react-table'
-import { cn } from '@/lib/utils'
-import { useTableUrlState } from '@/hooks/use-table-url-state'
+import { useEffect, useState } from 'react'
+import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
+import { EmptyState } from '@/components/empty-state'
 import {
   Table,
   TableBody,
@@ -22,10 +22,10 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
-import { EmptyState } from '@/components/empty-state'
+import { useTableUrlState } from '@/hooks/use-table-url-state'
+import { cn } from '@/lib/utils'
 import { priorities, statuses } from '../data/data'
-import { type Task } from '../data/schema'
+import type { Task } from '../data/schema'
 import { DataTableBulkActions } from './data-table-bulk-actions'
 import { tasksColumns as columns } from './tasks-columns'
 import { useTasks } from './tasks-provider'
@@ -138,7 +138,7 @@ export function TasksTable({
     >
       <DataTableToolbar
         table={table}
-        searchPlaceholder='按标题或 ID 筛选...'
+        searchPlaceholder="按标题或 ID 筛选..."
         filters={[
           {
             columnId: 'status',
@@ -152,8 +152,8 @@ export function TasksTable({
           },
         ]}
       />
-      <div className='overflow-hidden rounded-md border'>
-        <Table className='min-w-xl'>
+      <div className="overflow-hidden rounded-md border">
+        <Table className="min-w-xl">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -184,7 +184,7 @@ export function TasksTable({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className='h-24 text-center'
+                  className="h-24 text-center"
                 >
                   加载中...
                 </TableCell>
@@ -216,14 +216,14 @@ export function TasksTable({
                 <TableCell colSpan={columns.length}>
                   {hasFilters ? (
                     <EmptyState
-                      variant='tasks'
+                      variant="tasks"
                       compact
-                      title='没有匹配的任务'
-                      description='尝试调整筛选条件或清除过滤器。'
+                      title="没有匹配的任务"
+                      description="尝试调整筛选条件或清除过滤器。"
                     />
                   ) : (
                     <EmptyState
-                      variant='tasks'
+                      variant="tasks"
                       compact
                       action={{
                         label: '创建任务',
@@ -241,7 +241,7 @@ export function TasksTable({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} className='mt-auto' />
+      <DataTablePagination table={table} className="mt-auto" />
       <DataTableBulkActions table={table} />
     </div>
   )

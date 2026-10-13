@@ -1,11 +1,11 @@
 import { Router } from 'express'
 import { authRouter } from './auth.routes.js'
-import { usersRouter } from './users.routes.js'
-import { tasksRouter } from './tasks.routes.js'
 import { dashboardRouter } from './dashboard.routes.js'
-import { settingsRouter, chatsRouter } from './settings.routes.js'
 import { rolesRouter } from './roles.routes.js'
+import { chatsRouter, settingsRouter } from './settings.routes.js'
+import { tasksRouter } from './tasks.routes.js'
 import { testRouter } from './test.routes.js'
+import { usersRouter } from './users.routes.js'
 
 export const apiRouter = Router()
 

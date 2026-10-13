@@ -1,12 +1,12 @@
-import { clearCookies } from '@/test-utils/cookies'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render, type RenderResult } from 'vitest-browser-react'
 import { userEvent } from 'vitest/browser'
-import { getCookie, setCookie } from '@/lib/cookies'
+import { type RenderResult, render } from 'vitest-browser-react'
+import { SidebarProvider } from '@/components/ui/sidebar'
 import { DirectionProvider } from '@/context/direction-provider'
 import { LayoutProvider } from '@/context/layout-provider'
 import { ThemeProvider } from '@/context/theme-provider'
-import { SidebarProvider } from '@/components/ui/sidebar'
+import { getCookie, setCookie } from '@/lib/cookies'
+import { clearCookies } from '@/test-utils/cookies'
 import { ConfigDrawer } from './config-drawer'
 
 async function renderConfigDrawer({

@@ -16,7 +16,7 @@ export function ProductsDialogs() {
   return (
     <>
       <ProductMutateDrawer
-        key='product-create'
+        key="product-create"
         open={open === 'create'}
         onOpenChange={() => setOpen('create')}
       />
@@ -36,7 +36,7 @@ export function ProductsDialogs() {
           />
 
           <ConfirmDialog
-            key='product-delete'
+            key="product-delete"
             destructive
             open={open === 'delete'}
             onOpenChange={() => {
@@ -46,7 +46,7 @@ export function ProductsDialogs() {
               }, 500)
             }}
             handleConfirm={handleDelete}
-            className='max-w-md'
+            className="max-w-md"
             title={`删除商品「${currentRow.name}」？`}
             desc={
               <>
@@ -55,7 +55,7 @@ export function ProductsDialogs() {
                 此操作无法撤销。
               </>
             }
-            confirmText='删除'
+            confirmText="删除"
           />
         </>
       )}

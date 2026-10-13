@@ -1,37 +1,37 @@
-import { useState } from 'react'
-import { Fragment } from 'react/jsx-runtime'
-import { format } from 'date-fns'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { format } from 'date-fns'
 import {
   ArrowLeft,
-  MoreVertical,
   Edit,
+  ImagePlus,
+  MessagesSquare,
+  MoreVertical,
   Paperclip,
   Phone,
-  ImagePlus,
   Plus,
   Search as SearchIcon,
   Send,
   Video,
-  MessagesSquare,
 } from 'lucide-react'
+import { useState } from 'react'
+import { Fragment } from 'react/jsx-runtime'
 import { toast } from 'sonner'
 import * as chatsApi from '@/api/chats'
-import { handleServerError } from '@/lib/handle-server-error'
-import { cn, getDisplayNameInitials } from '@/lib/utils'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
 import { ConfigDrawer } from '@/components/config-drawer'
 import { EmptyState } from '@/components/empty-state'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Separator } from '@/components/ui/separator'
 import { UserNav } from '@/components/user-nav'
+import { handleServerError } from '@/lib/handle-server-error'
+import { cn, getDisplayNameInitials } from '@/lib/utils'
 import { NewChat } from './components/new-chat'
-import { type ChatUser, type Convo } from './data/chat-types'
+import type { ChatUser, Convo } from './data/chat-types'
 
 export function Chats() {
   const queryClient = useQueryClient()
@@ -91,29 +91,29 @@ export function Chats() {
   return (
     <>
       <Header>
-        <Search className='me-auto' />
+        <Search className="me-auto" />
         <ThemeSwitch />
         <ConfigDrawer />
         <UserNav />
       </Header>
 
       <Main fixed>
-        <section className='flex h-full gap-6'>
-          <div className='flex w-full flex-col gap-2 sm:w-56 lg:w-72 2xl:w-80'>
-            <div className='sticky top-0 z-10 -mx-4 bg-background px-4 pb-3 shadow-md sm:static sm:z-auto sm:mx-0 sm:p-0 sm:shadow-none'>
-              <div className='flex items-center justify-between py-2'>
-                <div className='flex gap-2'>
-                  <h1 className='text-2xl font-bold'>收件箱</h1>
+        <section className="flex h-full gap-6">
+          <div className="flex w-full flex-col gap-2 sm:w-56 lg:w-72 2xl:w-80">
+            <div className="sticky top-0 z-10 -mx-4 bg-background px-4 pb-3 shadow-md sm:static sm:z-auto sm:mx-0 sm:p-0 sm:shadow-none">
+              <div className="flex items-center justify-between py-2">
+                <div className="flex gap-2">
+                  <h1 className="text-2xl font-bold">收件箱</h1>
                   <MessagesSquare size={20} />
                 </div>
 
                 <Button
-                  size='icon'
-                  variant='ghost'
+                  size="icon"
+                  variant="ghost"
                   onClick={() => setCreateConversationDialog(true)}
-                  className='rounded-lg'
+                  className="rounded-lg"
                 >
-                  <Edit size={24} className='stroke-muted-foreground' />
+                  <Edit size={24} className="stroke-muted-foreground" />
                 </Button>
               </div>
 
@@ -123,24 +123,24 @@ export function Chats() {
                   'flex h-10 w-full items-center space-x-0 rounded-md border border-border ps-2'
                 )}
               >
-                <SearchIcon size={15} className='me-2 stroke-slate-500' />
-                <span className='sr-only'>搜索</span>
+                <SearchIcon size={15} className="me-2 stroke-slate-500" />
+                <span className="sr-only">搜索</span>
                 <input
-                  type='text'
-                  className='w-full flex-1 bg-inherit text-sm focus-visible:outline-hidden'
-                  placeholder='搜索聊天...'
+                  type="text"
+                  className="w-full flex-1 bg-inherit text-sm focus-visible:outline-hidden"
+                  placeholder="搜索聊天..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
               </label>
             </div>
 
-            <ScrollArea className='-mx-3 h-full overflow-scroll p-3'>
+            <ScrollArea className="-mx-3 h-full overflow-scroll p-3">
               {isLoading ? (
-                <p className='px-2 text-sm text-muted-foreground'>加载中...</p>
+                <p className="px-2 text-sm text-muted-foreground">加载中...</p>
               ) : filteredChatList.length === 0 ? (
                 <EmptyState
-                  variant='chats-list'
+                  variant="chats-list"
                   compact
                   action={
                     search.trim()
@@ -166,7 +166,7 @@ export function Chats() {
                   return (
                     <Fragment key={id}>
                       <button
-                        type='button'
+                        type="button"
                         className={cn(
                           'group hover:bg-accent hover:text-accent-foreground',
                           `flex w-full rounded-md px-2 py-2 text-start text-sm`,
@@ -177,7 +177,7 @@ export function Chats() {
                           setMobileSelectedUser(chatUsr)
                         }}
                       >
-                        <div className='flex gap-2'>
+                        <div className="flex gap-2">
                           <Avatar>
                             <AvatarImage src={profile} alt={username} />
                             <AvatarFallback>
@@ -185,16 +185,16 @@ export function Chats() {
                             </AvatarFallback>
                           </Avatar>
                           <div>
-                            <span className='col-start-2 row-span-2 font-medium'>
+                            <span className="col-start-2 row-span-2 font-medium">
                               {fullName}
                             </span>
-                            <span className='col-start-2 row-span-2 row-start-2 line-clamp-2 text-ellipsis text-muted-foreground group-hover:text-accent-foreground/90'>
+                            <span className="col-start-2 row-span-2 row-start-2 line-clamp-2 text-ellipsis text-muted-foreground group-hover:text-accent-foreground/90">
                               {lastMsg}
                             </span>
                           </div>
                         </div>
                       </button>
-                      <Separator className='my-1' />
+                      <Separator className="my-1" />
                     </Fragment>
                   )
                 })
@@ -209,18 +209,18 @@ export function Chats() {
                 mobileSelectedUser && 'inset-s-0 flex'
               )}
             >
-              <div className='mb-1 flex flex-none justify-between bg-card p-4 shadow-lg sm:rounded-t-md'>
-                <div className='flex gap-3'>
+              <div className="mb-1 flex flex-none justify-between bg-card p-4 shadow-lg sm:rounded-t-md">
+                <div className="flex gap-3">
                   <Button
-                    size='icon'
-                    variant='ghost'
-                    className='-ms-2 h-full sm:hidden'
+                    size="icon"
+                    variant="ghost"
+                    className="-ms-2 h-full sm:hidden"
                     onClick={() => setMobileSelectedUser(null)}
                   >
-                    <ArrowLeft className='rtl:rotate-180' />
+                    <ArrowLeft className="rtl:rotate-180" />
                   </Button>
-                  <div className='flex items-center gap-2 lg:gap-4'>
-                    <Avatar className='size-9 lg:size-11'>
+                  <div className="flex items-center gap-2 lg:gap-4">
+                    <Avatar className="size-9 lg:size-11">
                       <AvatarImage
                         src={selectedUser.profile}
                         alt={selectedUser.username}
@@ -230,45 +230,45 @@ export function Chats() {
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <span className='col-start-2 row-span-2 text-sm font-medium lg:text-base'>
+                      <span className="col-start-2 row-span-2 text-sm font-medium lg:text-base">
                         {selectedUser.fullName}
                       </span>
-                      <span className='col-start-2 row-span-2 row-start-2 line-clamp-1 block max-w-32 text-xs text-nowrap text-ellipsis text-muted-foreground lg:max-w-none lg:text-sm'>
+                      <span className="col-start-2 row-span-2 row-start-2 line-clamp-1 block max-w-32 text-xs text-nowrap text-ellipsis text-muted-foreground lg:max-w-none lg:text-sm">
                         {selectedUser.title}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className='-me-1 flex items-center gap-1 lg:gap-2'>
+                <div className="-me-1 flex items-center gap-1 lg:gap-2">
                   <Button
-                    size='icon'
-                    variant='ghost'
-                    className='hidden size-8 rounded-full sm:inline-flex lg:size-10'
+                    size="icon"
+                    variant="ghost"
+                    className="hidden size-8 rounded-full sm:inline-flex lg:size-10"
                   >
-                    <Video size={22} className='stroke-muted-foreground' />
+                    <Video size={22} className="stroke-muted-foreground" />
                   </Button>
                   <Button
-                    size='icon'
-                    variant='ghost'
-                    className='hidden size-8 rounded-full sm:inline-flex lg:size-10'
+                    size="icon"
+                    variant="ghost"
+                    className="hidden size-8 rounded-full sm:inline-flex lg:size-10"
                   >
-                    <Phone size={22} className='stroke-muted-foreground' />
+                    <Phone size={22} className="stroke-muted-foreground" />
                   </Button>
                   <Button
-                    size='icon'
-                    variant='ghost'
-                    className='h-10 rounded-md sm:h-8 sm:w-4 lg:h-10 lg:w-6'
+                    size="icon"
+                    variant="ghost"
+                    className="h-10 rounded-md sm:h-8 sm:w-4 lg:h-10 lg:w-6"
                   >
-                    <MoreVertical className='stroke-muted-foreground sm:size-5' />
+                    <MoreVertical className="stroke-muted-foreground sm:size-5" />
                   </Button>
                 </div>
               </div>
 
-              <div className='flex flex-1 flex-col gap-2 rounded-md px-4 pt-0 pb-4'>
-                <div className='flex size-full flex-1'>
-                  <div className='chat-text-container relative -me-4 flex flex-1 flex-col overflow-y-hidden'>
-                    <div className='chat-flex flex h-40 w-full grow flex-col-reverse justify-start gap-4 overflow-y-auto py-2 pe-4 pb-4'>
+              <div className="flex flex-1 flex-col gap-2 rounded-md px-4 pt-0 pb-4">
+                <div className="flex size-full flex-1">
+                  <div className="chat-text-container relative -me-4 flex flex-1 flex-col overflow-y-hidden">
+                    <div className="chat-flex flex h-40 w-full grow flex-col-reverse justify-start gap-4 overflow-y-auto py-2 pe-4 pb-4">
                       {currentMessage &&
                         Object.keys(currentMessage).map((key) => (
                           <Fragment key={key}>
@@ -294,69 +294,69 @@ export function Chats() {
                                 </span>
                               </div>
                             ))}
-                            <div className='text-center text-xs'>{key}</div>
+                            <div className="text-center text-xs">{key}</div>
                           </Fragment>
                         ))}
                     </div>
                   </div>
                 </div>
                 <form
-                  className='flex w-full flex-none gap-2'
+                  className="flex w-full flex-none gap-2"
                   onSubmit={(e) => void handleSendMessage(e)}
                 >
-                  <div className='flex flex-1 items-center gap-2 rounded-md border border-input bg-card px-2 py-1 focus-within:ring-1 focus-within:ring-ring focus-within:outline-hidden lg:gap-4'>
-                    <div className='space-x-1'>
+                  <div className="flex flex-1 items-center gap-2 rounded-md border border-input bg-card px-2 py-1 focus-within:ring-1 focus-within:ring-ring focus-within:outline-hidden lg:gap-4">
+                    <div className="space-x-1">
                       <Button
-                        size='icon'
-                        type='button'
-                        variant='ghost'
-                        className='h-8 rounded-md'
+                        size="icon"
+                        type="button"
+                        variant="ghost"
+                        className="h-8 rounded-md"
                       >
-                        <Plus size={20} className='stroke-muted-foreground' />
+                        <Plus size={20} className="stroke-muted-foreground" />
                       </Button>
                       <Button
-                        size='icon'
-                        type='button'
-                        variant='ghost'
-                        className='hidden h-8 rounded-md lg:inline-flex'
+                        size="icon"
+                        type="button"
+                        variant="ghost"
+                        className="hidden h-8 rounded-md lg:inline-flex"
                       >
                         <ImagePlus
                           size={20}
-                          className='stroke-muted-foreground'
+                          className="stroke-muted-foreground"
                         />
                       </Button>
                       <Button
-                        size='icon'
-                        type='button'
-                        variant='ghost'
-                        className='hidden h-8 rounded-md lg:inline-flex'
+                        size="icon"
+                        type="button"
+                        variant="ghost"
+                        className="hidden h-8 rounded-md lg:inline-flex"
                       >
                         <Paperclip
                           size={20}
-                          className='stroke-muted-foreground'
+                          className="stroke-muted-foreground"
                         />
                       </Button>
                     </div>
-                    <label className='flex-1'>
-                      <span className='sr-only'>聊天输入框</span>
+                    <label className="flex-1">
+                      <span className="sr-only">聊天输入框</span>
                       <input
-                        type='text'
-                        placeholder='输入消息...'
-                        className='h-8 w-full bg-inherit focus-visible:outline-hidden'
+                        type="text"
+                        placeholder="输入消息..."
+                        className="h-8 w-full bg-inherit focus-visible:outline-hidden"
                         value={messageInput}
                         onChange={(e) => setMessageInput(e.target.value)}
                       />
                     </label>
                     <Button
-                      variant='ghost'
-                      size='icon'
-                      className='hidden sm:inline-flex'
-                      type='submit'
+                      variant="ghost"
+                      size="icon"
+                      className="hidden sm:inline-flex"
+                      type="submit"
                     >
                       <Send size={20} />
                     </Button>
                   </div>
-                  <Button className='h-full sm:hidden' type='submit'>
+                  <Button className="h-full sm:hidden" type="submit">
                     <Send size={18} /> 发送
                   </Button>
                 </form>
@@ -369,7 +369,7 @@ export function Chats() {
               )}
             >
               <EmptyState
-                variant='chats-empty'
+                variant="chats-empty"
                 action={{
                   label: '发送消息',
                   onClick: () => setCreateConversationDialog(true),

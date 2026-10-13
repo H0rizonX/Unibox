@@ -1,8 +1,5 @@
-import { useState } from 'react'
 import {
   type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -10,9 +7,13 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from '@tanstack/react-table'
-import { cn } from '@/lib/utils'
+import { useState } from 'react'
+import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
+import { EmptyState } from '@/components/empty-state'
 import {
   Table,
   TableBody,
@@ -21,10 +22,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
-import { EmptyState } from '@/components/empty-state'
+import { cn } from '@/lib/utils'
 import { categories, productStatuses } from '../data/data'
-import { type Product } from '../data/schema'
+import type { Product } from '../data/schema'
 import { productsColumns as columns } from './products-columns'
 import { useProducts } from './products-provider'
 
@@ -88,7 +88,7 @@ export function ProductsTable({ data }: DataTableProps) {
     <div className={cn('flex flex-1 flex-col gap-4')}>
       <DataTableToolbar
         table={table}
-        searchPlaceholder='按名称或描述筛选...'
+        searchPlaceholder="按名称或描述筛选..."
         filters={[
           {
             columnId: 'status',
@@ -108,8 +108,8 @@ export function ProductsTable({ data }: DataTableProps) {
           },
         ]}
       />
-      <div className='overflow-hidden rounded-md border'>
-        <Table className='min-w-xl'>
+      <div className="overflow-hidden rounded-md border">
+        <Table className="min-w-xl">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -145,14 +145,14 @@ export function ProductsTable({ data }: DataTableProps) {
                 <TableCell colSpan={columns.length}>
                   {hasFilters ? (
                     <EmptyState
-                      variant='products'
+                      variant="products"
                       compact
-                      title='没有匹配的商品'
-                      description='尝试调整筛选条件或清除过滤器。'
+                      title="没有匹配的商品"
+                      description="尝试调整筛选条件或清除过滤器。"
                     />
                   ) : (
                     <EmptyState
-                      variant='products'
+                      variant="products"
                       compact
                       action={{
                         label: '上传商品',
@@ -166,7 +166,7 @@ export function ProductsTable({ data }: DataTableProps) {
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} className='mt-auto' />
+      <DataTablePagination table={table} className="mt-auto" />
     </div>
   )
 }

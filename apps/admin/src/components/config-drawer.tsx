@@ -1,6 +1,6 @@
-import { type SVGProps } from 'react'
-import { Root as Radio, Item } from '@radix-ui/react-radio-group'
+import { Item, Root as Radio } from '@radix-ui/react-radio-group'
 import { CircleCheck, RotateCcw, Settings } from 'lucide-react'
+import type { SVGProps } from 'react'
 import { IconDir } from '@/assets/custom/icon-dir'
 import { IconLayoutCompact } from '@/assets/custom/icon-layout-compact'
 import { IconLayoutDefault } from '@/assets/custom/icon-layout-default'
@@ -11,10 +11,6 @@ import { IconSidebarSidebar } from '@/assets/custom/icon-sidebar-sidebar'
 import { IconThemeDark } from '@/assets/custom/icon-theme-dark'
 import { IconThemeLight } from '@/assets/custom/icon-theme-light'
 import { IconThemeSystem } from '@/assets/custom/icon-theme-system'
-import { cn } from '@/lib/utils'
-import { useDirection } from '@/context/direction-provider'
-import { type Collapsible, useLayout } from '@/context/layout-provider'
-import { useTheme } from '@/context/theme-provider'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -25,6 +21,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
+import { useDirection } from '@/context/direction-provider'
+import { type Collapsible, useLayout } from '@/context/layout-provider'
+import { useTheme } from '@/context/theme-provider'
+import { cn } from '@/lib/utils'
 import { useSidebar } from './ui/sidebar'
 
 export function ConfigDrawer() {
@@ -44,32 +44,30 @@ export function ConfigDrawer() {
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          size='icon'
-          variant='ghost'
-          aria-label='打开主题设置'
-          className='rounded-full'
+          size="icon"
+          variant="ghost"
+          aria-label="打开主题设置"
+          className="rounded-full"
         >
-          <Settings aria-hidden='true' />
+          <Settings aria-hidden="true" />
         </Button>
       </SheetTrigger>
-      <SheetContent className='flex flex-col'>
-        <SheetHeader className='pb-0 text-start'>
+      <SheetContent className="flex flex-col">
+        <SheetHeader className="pb-0 text-start">
           <SheetTitle>主题设置</SheetTitle>
-          <SheetDescription>
-            调整外观和布局以符合您的偏好。
-          </SheetDescription>
+          <SheetDescription>调整外观和布局以符合您的偏好。</SheetDescription>
         </SheetHeader>
-        <div className='space-y-6 overflow-y-auto px-4'>
+        <div className="space-y-6 overflow-y-auto px-4">
           <ThemeConfig />
           <SidebarConfig />
           <LayoutConfig />
           <DirConfig />
         </div>
-        <SheetFooter className='gap-2'>
+        <SheetFooter className="gap-2">
           <Button
-            variant='destructive'
+            variant="destructive"
             onClick={handleReset}
-            aria-label='将所有设置重置为默认值'
+            aria-label="将所有设置重置为默认值"
           >
             重置
           </Button>
@@ -103,14 +101,14 @@ function SectionTitle({
       {title}
       {showReset && onReset && (
         <Button
-          type='button'
-          size='icon'
-          variant='secondary'
-          className='size-4 rounded-full'
+          type="button"
+          size="icon"
+          variant="secondary"
+          className="size-4 rounded-full"
           onClick={onReset}
           aria-label={resetAriaLabel}
         >
-          <RotateCcw className='size-3' />
+          <RotateCcw className="size-3" />
         </Button>
       )}
     </div>
@@ -141,8 +139,8 @@ function RadioGroupItem({
           'group-data-[state=checked]:shadow-2xl group-data-[state=checked]:ring-primary',
           'group-focus-visible:ring-2'
         )}
-        role='img'
-        aria-hidden='false'
+        role="img"
+        aria-hidden="false"
         aria-label={`${item.label}选项预览`}
       >
         <CircleCheck
@@ -151,20 +149,20 @@ function RadioGroupItem({
             'group-data-[state=unchecked]:hidden',
             'absolute top-0 right-0 translate-x-1/2 -translate-y-1/2'
           )}
-          aria-hidden='true'
+          aria-hidden="true"
         />
         <item.icon
           className={cn(
             !isTheme &&
               'fill-primary stroke-primary group-data-[state=unchecked]:fill-muted-foreground group-data-[state=unchecked]:stroke-muted-foreground'
           )}
-          aria-hidden='true'
+          aria-hidden="true"
         />
       </div>
       <div
-        className='mt-1 text-xs'
+        className="mt-1 text-xs"
         id={`${item.value}-description`}
-        aria-live='polite'
+        aria-live="polite"
       >
         {item.label}
       </div>
@@ -177,17 +175,17 @@ function ThemeConfig() {
   return (
     <div>
       <SectionTitle
-        title='主题'
+        title="主题"
         showReset={theme !== defaultTheme}
         onReset={() => setTheme(defaultTheme)}
-        resetAriaLabel='将主题偏好重置为默认值'
+        resetAriaLabel="将主题偏好重置为默认值"
       />
       <Radio
         value={theme}
         onValueChange={setTheme}
-        className='grid w-full max-w-md grid-cols-3 gap-4'
-        aria-label='选择主题偏好'
-        aria-describedby='theme-description'
+        className="grid w-full max-w-md grid-cols-3 gap-4"
+        aria-label="选择主题偏好"
+        aria-describedby="theme-description"
       >
         {[
           {
@@ -209,7 +207,7 @@ function ThemeConfig() {
           <RadioGroupItem key={item.value} item={item} isTheme />
         ))}
       </Radio>
-      <div id='theme-description' className='sr-only'>
+      <div id="theme-description" className="sr-only">
         在系统偏好、浅色模式和深色模式之间选择
       </div>
     </div>
@@ -219,19 +217,19 @@ function ThemeConfig() {
 function SidebarConfig() {
   const { defaultVariant, variant, setVariant } = useLayout()
   return (
-    <div className='max-md:hidden'>
+    <div className="max-md:hidden">
       <SectionTitle
-        title='侧边栏'
+        title="侧边栏"
         showReset={defaultVariant !== variant}
         onReset={() => setVariant(defaultVariant)}
-        resetAriaLabel='将侧边栏样式重置为默认值'
+        resetAriaLabel="将侧边栏样式重置为默认值"
       />
       <Radio
         value={variant}
         onValueChange={setVariant}
-        className='grid w-full max-w-md grid-cols-3 gap-4'
-        aria-label='选择侧边栏样式'
-        aria-describedby='sidebar-description'
+        className="grid w-full max-w-md grid-cols-3 gap-4"
+        aria-label="选择侧边栏样式"
+        aria-describedby="sidebar-description"
       >
         {[
           {
@@ -253,7 +251,7 @@ function SidebarConfig() {
           <RadioGroupItem key={item.value} item={item} />
         ))}
       </Radio>
-      <div id='sidebar-description' className='sr-only'>
+      <div id="sidebar-description" className="sr-only">
         在内嵌、浮动或标准侧边栏布局之间选择
       </div>
     </div>
@@ -267,15 +265,15 @@ function LayoutConfig() {
   const radioState = open ? 'default' : collapsible
 
   return (
-    <div className='max-md:hidden'>
+    <div className="max-md:hidden">
       <SectionTitle
-        title='布局'
+        title="布局"
         showReset={radioState !== 'default'}
         onReset={() => {
           setOpen(true)
           setCollapsible(defaultCollapsible)
         }}
-        resetAriaLabel='将布局选项重置为默认值'
+        resetAriaLabel="将布局选项重置为默认值"
       />
       <Radio
         value={radioState}
@@ -287,9 +285,9 @@ function LayoutConfig() {
           setOpen(false)
           setCollapsible(v as Collapsible)
         }}
-        className='grid w-full max-w-md grid-cols-3 gap-4'
-        aria-label='选择布局样式'
-        aria-describedby='layout-description'
+        className="grid w-full max-w-md grid-cols-3 gap-4"
+        aria-label="选择布局样式"
+        aria-describedby="layout-description"
       >
         {[
           {
@@ -311,7 +309,7 @@ function LayoutConfig() {
           <RadioGroupItem key={item.value} item={item} />
         ))}
       </Radio>
-      <div id='layout-description' className='sr-only'>
+      <div id="layout-description" className="sr-only">
         在默认展开、紧凑图标或全屏布局模式之间选择
       </div>
     </div>
@@ -323,38 +321,38 @@ function DirConfig() {
   return (
     <div>
       <SectionTitle
-        title='方向'
+        title="方向"
         showReset={defaultDir !== dir}
         onReset={() => setDir(defaultDir)}
-        resetAriaLabel='将文本方向重置为默认值'
+        resetAriaLabel="将文本方向重置为默认值"
       />
       <Radio
         value={dir}
         onValueChange={setDir}
-        className='grid w-full max-w-md grid-cols-3 gap-4'
-        aria-label='选择站点方向'
-        aria-describedby='direction-description'
+        className="grid w-full max-w-md grid-cols-3 gap-4"
+        aria-label="选择站点方向"
+        aria-describedby="direction-description"
       >
         {[
           {
             value: 'ltr',
             label: '从左到右',
             icon: (props: SVGProps<SVGSVGElement>) => (
-              <IconDir dir='ltr' {...props} />
+              <IconDir dir="ltr" {...props} />
             ),
           },
           {
             value: 'rtl',
             label: '从右到左',
             icon: (props: SVGProps<SVGSVGElement>) => (
-              <IconDir dir='rtl' {...props} />
+              <IconDir dir="rtl" {...props} />
             ),
           },
         ].map((item) => (
           <RadioGroupItem key={item.value} item={item} />
         ))}
       </Radio>
-      <div id='direction-description' className='sr-only'>
+      <div id="direction-description" className="sr-only">
         在从左到右或从右到左的站点方向之间选择
       </div>
     </div>

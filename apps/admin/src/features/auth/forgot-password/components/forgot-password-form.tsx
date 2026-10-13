@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from '@tanstack/react-router'
 import { ArrowRight, Loader2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as authApi from '@/api/auth'
-import { handleServerError } from '@/lib/handle-server-error'
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -18,6 +16,8 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { handleServerError } from '@/lib/handle-server-error'
+import { cn } from '@/lib/utils'
 
 const EMAIL_RATE_LIMIT_SECONDS = 60
 
@@ -116,20 +116,20 @@ export function ForgotPasswordForm({
       >
         <FormField
           control={form.control}
-          name='email'
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormLabel>邮箱</FormLabel>
               <FormControl>
-                <Input placeholder='name@example.com' {...field} />
+                <Input placeholder="name@example.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className='mt-2' disabled={isLoading || countdown > 0}>
+        <Button className="mt-2" disabled={isLoading || countdown > 0}>
           {isLoading ? (
-            <Loader2 className='animate-spin' />
+            <Loader2 className="animate-spin" />
           ) : countdown > 0 ? (
             `${countdown} 秒后可发送`
           ) : (

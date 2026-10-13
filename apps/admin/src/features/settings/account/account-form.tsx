@@ -1,13 +1,12 @@
-import { useEffect } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as settingsApi from '@/api/settings'
-import { handleServerError } from '@/lib/handle-server-error'
-import { cn } from '@/lib/utils'
+import { DatePicker } from '@/components/date-picker'
 import { Button } from '@/components/ui/button'
 import {
   Command,
@@ -32,7 +31,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { DatePicker } from '@/components/date-picker'
+import { handleServerError } from '@/lib/handle-server-error'
+import { cn } from '@/lib/utils'
 
 const languages = [
   { label: '英语', value: 'en' },
@@ -96,15 +96,15 @@ export function AccountForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name='name'
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>姓名</FormLabel>
               <FormControl>
-                <Input placeholder='您的姓名' {...field} />
+                <Input placeholder="您的姓名" {...field} />
               </FormControl>
               <FormDescription>
                 此姓名将显示在您的个人资料和邮件中。
@@ -115,9 +115,9 @@ export function AccountForm() {
         />
         <FormField
           control={form.control}
-          name='dob'
+          name="dob"
           render={({ field }) => (
-            <FormItem className='flex flex-col'>
+            <FormItem className="flex flex-col">
               <FormLabel>出生日期</FormLabel>
               <DatePicker selected={field.value} onSelect={field.onChange} />
               <FormDescription>您的出生日期用于计算年龄。</FormDescription>
@@ -127,16 +127,16 @@ export function AccountForm() {
         />
         <FormField
           control={form.control}
-          name='language'
+          name="language"
           render={({ field }) => (
-            <FormItem className='flex flex-col'>
+            <FormItem className="flex flex-col">
               <FormLabel>语言</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
-                      variant='outline'
-                      role='combobox'
+                      variant="outline"
+                      role="combobox"
                       className={cn(
                         'w-50 justify-between',
                         !field.value && 'text-muted-foreground'
@@ -147,13 +147,13 @@ export function AccountForm() {
                             (language) => language.value === field.value
                           )?.label
                         : '选择语言'}
-                      <CaretSortIcon className='ms-2 h-4 w-4 shrink-0 opacity-50' />
+                      <CaretSortIcon className="ms-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
-                <PopoverContent className='w-50 p-0'>
+                <PopoverContent className="w-50 p-0">
                   <Command>
-                    <CommandInput placeholder='搜索语言...' />
+                    <CommandInput placeholder="搜索语言..." />
                     <CommandEmpty>未找到语言。</CommandEmpty>
                     <CommandGroup>
                       <CommandList>
@@ -186,7 +186,7 @@ export function AccountForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>更新账户</Button>
+        <Button type="submit">更新账户</Button>
       </form>
     </Form>
   )

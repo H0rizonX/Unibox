@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { mockInvalidateQueries } from '@/test-utils/mock-query-client'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render } from 'vitest-browser-react'
 import { userEvent } from 'vitest/browser'
+import { render } from 'vitest-browser-react'
 import * as usersApi from '@/api/users'
+import { mockInvalidateQueries } from '@/test-utils/mock-query-client'
 import { UsersInviteDialog } from './users-invite-dialog'
 
 vi.mock('@/api/users', () => ({
@@ -95,7 +95,7 @@ describe('UsersInviteDialog', () => {
       const [open, setOpen] = useState(true)
       return (
         <>
-          <button type='button' onClick={() => setOpen(true)}>
+          <button type="button" onClick={() => setOpen(true)}>
             Reopen
           </button>
           <UsersInviteDialog open={open} onOpenChange={setOpen} />

@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from '@tanstack/react-router'
 import { Loader2, UserPlus } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 // import { IconFacebook, IconGithub } from '@/assets/brand-icons'
 import * as authApi from '@/api/auth'
-import { handleServerError } from '@/lib/handle-server-error'
-import { cn } from '@/lib/utils'
+import { PasswordInput } from '@/components/password-input'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -19,7 +18,8 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { PasswordInput } from '@/components/password-input'
+import { handleServerError } from '@/lib/handle-server-error'
+import { cn } from '@/lib/utils'
 
 const EMAIL_RATE_LIMIT_SECONDS = 60
 
@@ -134,12 +134,12 @@ export function SignUpForm({
       >
         <FormField
           control={form.control}
-          name='email'
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormLabel>邮箱</FormLabel>
               <FormControl>
-                <Input placeholder='name@example.com' {...field} />
+                <Input placeholder="name@example.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -147,12 +147,12 @@ export function SignUpForm({
         />
         <FormField
           control={form.control}
-          name='password'
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>密码</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -160,20 +160,20 @@ export function SignUpForm({
         />
         <FormField
           control={form.control}
-          name='confirmPassword'
+          name="confirmPassword"
           render={({ field }) => (
             <FormItem>
               <FormLabel>确认密码</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className='mt-2' disabled={isLoading || countdown > 0}>
+        <Button className="mt-2" disabled={isLoading || countdown > 0}>
           {isLoading ? (
-            <Loader2 className='animate-spin' />
+            <Loader2 className="animate-spin" />
           ) : countdown > 0 ? (
             `${countdown} 秒后可发送`
           ) : (

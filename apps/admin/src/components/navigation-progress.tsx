@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
 import { useRouterState } from '@tanstack/react-router'
+import { useEffect, useRef } from 'react'
 import LoadingBar, { type LoadingBarRef } from 'react-top-loading-bar'
 
 export function NavigationProgress() {
@@ -16,7 +16,7 @@ export function NavigationProgress() {
 
   return (
     <LoadingBar
-      color='var(--muted-foreground)'
+      color="var(--muted-foreground)"
       ref={ref}
       shadow={true}
       height={2}

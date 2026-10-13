@@ -32,17 +32,17 @@ export function Tasks() {
   return (
     <TasksProvider>
       <Header fixed>
-        <Search className='me-auto' />
+        <Search className="me-auto" />
         <ThemeSwitch />
         <ConfigDrawer />
         <UserNav />
       </Header>
 
-      <Main className='flex flex-1 flex-col gap-4 sm:gap-6'>
-        <div className='flex flex-wrap items-end justify-between gap-2'>
+      <Main className="flex flex-1 flex-col gap-4 sm:gap-6">
+        <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
-            <h2 className='text-2xl font-bold tracking-tight'>任务</h2>
-            <p className='text-muted-foreground'>这是您本月的任务列表！</p>
+            <h2 className="text-2xl font-bold tracking-tight">任务</h2>
+            <p className="text-muted-foreground">这是您本月的任务列表！</p>
           </div>
           <TasksPrimaryButtons />
         </div>

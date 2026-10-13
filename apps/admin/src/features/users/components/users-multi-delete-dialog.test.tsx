@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { userEvent } from 'vitest/browser'
+import { render } from 'vitest-browser-react'
+import * as usersApi from '@/api/users'
 import { mockInvalidateQueries } from '@/test-utils/mock-query-client'
 import { createTableMock } from '@/test-utils/tanstack-table'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render } from 'vitest-browser-react'
-import { userEvent } from 'vitest/browser'
-import * as usersApi from '@/api/users'
 import { UsersMultiDeleteDialog } from './users-multi-delete-dialog'
 
 vi.mock('@/api/users', () => ({
@@ -89,7 +89,7 @@ describe('UsersMultiDeleteDialog', () => {
       const [open, setOpen] = useState(true)
       return (
         <>
-          <button type='button' onClick={() => setOpen(true)}>
+          <button type="button" onClick={() => setOpen(true)}>
             Reopen
           </button>
           {open ? (

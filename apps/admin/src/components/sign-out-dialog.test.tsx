@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render } from 'vitest-browser-react'
 import { userEvent } from 'vitest/browser'
+import { render } from 'vitest-browser-react'
 import { SignOutDialog } from './sign-out-dialog'
 
 const navigate = vi.fn()

@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from '@tanstack/react-router'
 import { KeyRound, Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as authApi from '@/api/auth'
-import { handleServerError } from '@/lib/handle-server-error'
-import { cn } from '@/lib/utils'
+import { PasswordInput } from '@/components/password-input'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -17,7 +16,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { PasswordInput } from '@/components/password-input'
+import { handleServerError } from '@/lib/handle-server-error'
+import { cn } from '@/lib/utils'
 
 const formSchema = z
   .object({
@@ -83,12 +83,12 @@ export function ResetPasswordForm({
       >
         <FormField
           control={form.control}
-          name='password'
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>新密码</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -96,19 +96,19 @@ export function ResetPasswordForm({
         />
         <FormField
           control={form.control}
-          name='confirmPassword'
+          name="confirmPassword"
           render={({ field }) => (
             <FormItem>
               <FormLabel>确认新密码</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className='mt-2' disabled={isLoading || !resetToken}>
-          {isLoading ? <Loader2 className='animate-spin' /> : <KeyRound />}
+        <Button className="mt-2" disabled={isLoading || !resetToken}>
+          {isLoading ? <Loader2 className="animate-spin" /> : <KeyRound />}
           重置密码
         </Button>
       </form>

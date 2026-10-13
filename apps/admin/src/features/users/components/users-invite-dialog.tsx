@@ -1,11 +1,11 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
 import { MailPlus, Send } from 'lucide-react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as usersApi from '@/api/users'
-import { handleServerError } from '@/lib/handle-server-error'
+import { SelectDropdown } from '@/components/select-dropdown'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { SelectDropdown } from '@/components/select-dropdown'
+import { handleServerError } from '@/lib/handle-server-error'
 import { roles } from '../data/data'
 
 const formSchema = z.object({
@@ -74,9 +74,9 @@ export function UsersInviteDialog({
         onOpenChange(state)
       }}
     >
-      <DialogContent className='sm:max-w-md'>
-        <DialogHeader className='text-start'>
-          <DialogTitle className='flex items-center gap-2'>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="text-start">
+          <DialogTitle className="flex items-center gap-2">
             <MailPlus /> 邀请用户
           </DialogTitle>
           <DialogDescription>
@@ -85,20 +85,20 @@ export function UsersInviteDialog({
         </DialogHeader>
         <Form {...form}>
           <form
-            id='user-invite-form'
+            id="user-invite-form"
             onSubmit={form.handleSubmit(onSubmit)}
-            className='space-y-4'
+            className="space-y-4"
           >
             <FormField
               control={form.control}
-              name='email'
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>邮箱</FormLabel>
                   <FormControl>
                     <Input
-                      type='email'
-                      placeholder='例如：john.doe@gmail.com'
+                      type="email"
+                      placeholder="例如：john.doe@gmail.com"
                       {...field}
                     />
                   </FormControl>
@@ -108,14 +108,14 @@ export function UsersInviteDialog({
             />
             <FormField
               control={form.control}
-              name='role'
+              name="role"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>角色</FormLabel>
                   <SelectDropdown
                     defaultValue={field.value}
                     onValueChange={field.onChange}
-                    placeholder='选择角色'
+                    placeholder="选择角色"
                     items={roles.map(({ label, value }) => ({
                       label,
                       value,
@@ -127,14 +127,14 @@ export function UsersInviteDialog({
             />
             <FormField
               control={form.control}
-              name='desc'
+              name="desc"
               render={({ field }) => (
-                <FormItem className=''>
+                <FormItem className="">
                   <FormLabel>描述（可选）</FormLabel>
                   <FormControl>
                     <Textarea
-                      className='resize-none'
-                      placeholder='添加个人备注（可选）'
+                      className="resize-none"
+                      placeholder="添加个人备注（可选）"
                       {...field}
                     />
                   </FormControl>
@@ -144,11 +144,11 @@ export function UsersInviteDialog({
             />
           </form>
         </Form>
-        <DialogFooter className='gap-y-2'>
+        <DialogFooter className="gap-y-2">
           <DialogClose asChild>
-            <Button variant='outline'>取消</Button>
+            <Button variant="outline">取消</Button>
           </DialogClose>
-          <Button type='submit' form='user-invite-form'>
+          <Button type="submit" form="user-invite-form">
             邀请 <Send />
           </Button>
         </DialogFooter>

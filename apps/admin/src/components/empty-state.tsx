@@ -1,4 +1,3 @@
-import type { ComponentType } from 'react'
 import {
   FileText,
   MessageSquareText,
@@ -6,8 +5,9 @@ import {
   PlusCircle,
   Users,
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import type { ComponentType } from 'react'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 export type EmptyStateVariant =
   | 'dashboard-chart'
@@ -120,17 +120,17 @@ export function EmptyState({
       >
         <Icon className={cn(iconSizeClass, 'stroke-1.5')} />
       </div>
-      <div className='space-y-1'>
+      <div className="space-y-1">
         <p className={titleClass}>{title ?? content.title}</p>
         {description !== null ? (
           <p className={descClass}>{description ?? content.description}</p>
         ) : null}
       </div>
       {(action || secondaryAction) && (
-        <div className='flex flex-wrap items-center justify-center gap-2 pt-1'>
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
           {secondaryAction && (
             <Button
-              variant='outline'
+              variant="outline"
               size={compact ? 'sm' : 'default'}
               onClick={secondaryAction.onClick}
             >
@@ -139,7 +139,7 @@ export function EmptyState({
           )}
           {action && (
             <Button size={compact ? 'sm' : 'default'} onClick={action.onClick}>
-              <PlusCircle className='me-1 h-4 w-4' />
+              <PlusCircle className="me-1 h-4 w-4" />
               {action.label}
             </Button>
           )}

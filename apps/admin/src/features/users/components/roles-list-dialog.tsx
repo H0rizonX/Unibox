@@ -1,13 +1,11 @@
 'use client'
 
-import { useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Pencil, Trash2, Plus } from 'lucide-react'
+import { Pencil, Plus, Trash2 } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
+import type { Role } from '@/api/roles'
 import * as rolesApi from '@/api/roles'
-import { type Role } from '@/api/roles'
-import { useAuthStore } from '@/stores/auth-store'
-import { isAdmin as checkIsAdmin } from '@/lib/authorization'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -27,6 +25,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { isAdmin as checkIsAdmin } from '@/lib/authorization'
+import { useAuthStore } from '@/stores/auth-store'
 import { RolesDeleteDialog } from './roles-delete-dialog'
 import { RolesDialog } from './roles-dialog'
 
@@ -61,17 +61,17 @@ export function RolesListDialog({ open, onOpenChange }: RolesListDialogProps) {
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className='sm:max-w-2xl'>
-          <DialogHeader className='text-start'>
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader className="text-start">
             <DialogTitle>角色管理</DialogTitle>
             <DialogDescription>
               在此管理系统的角色及其权限配置。系统角色不可编辑或删除。
             </DialogDescription>
           </DialogHeader>
-          <ScrollArea className='max-h-[400px]'>
+          <ScrollArea className="max-h-[400px]">
             {isLoading ? (
-              <div className='flex items-center justify-center py-8'>
-                <span className='text-muted-foreground'>加载中...</span>
+              <div className="flex items-center justify-center py-8">
+                <span className="text-muted-foreground">加载中...</span>
               </div>
             ) : (
               <Table>
@@ -82,44 +82,44 @@ export function RolesListDialog({ open, onOpenChange }: RolesListDialogProps) {
                     <TableHead>权限数量</TableHead>
                     <TableHead>类型</TableHead>
                     {isAdmin && (
-                      <TableHead className='text-end'>操作</TableHead>
+                      <TableHead className="text-end">操作</TableHead>
                     )}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {roles.map((role) => (
                     <TableRow key={role.id}>
-                      <TableCell className='font-medium'>{role.name}</TableCell>
+                      <TableCell className="font-medium">{role.name}</TableCell>
                       <TableCell>{role.label}</TableCell>
                       <TableCell>{role.permissions.length}</TableCell>
                       <TableCell>
                         {role.isSystem ? (
-                          <Badge variant='secondary'>系统角色</Badge>
+                          <Badge variant="secondary">系统角色</Badge>
                         ) : (
-                          <Badge variant='outline'>自定义</Badge>
+                          <Badge variant="outline">自定义</Badge>
                         )}
                       </TableCell>
                       {isAdmin && (
-                        <TableCell className='text-end'>
-                          <div className='flex justify-end gap-2'>
+                        <TableCell className="text-end">
+                          <div className="flex justify-end gap-2">
                             <Button
-                              variant='ghost'
-                              size='icon'
+                              variant="ghost"
+                              size="icon"
                               disabled={role.isSystem || role.name === 'admin'}
                               onClick={() => {
                                 setEditRole(role)
                                 setEditDrawerOpen(true)
                               }}
                             >
-                              <Pencil className='h-4 w-4' />
+                              <Pencil className="h-4 w-4" />
                             </Button>
                             <Button
-                              variant='ghost'
-                              size='icon'
+                              variant="ghost"
+                              size="icon"
                               disabled={role.isSystem || role.name === 'admin'}
                               onClick={() => setDeleteRole(role)}
                             >
-                              <Trash2 className='h-4 w-4 text-destructive' />
+                              <Trash2 className="h-4 w-4 text-destructive" />
                             </Button>
                           </div>
                         </TableCell>
@@ -134,9 +134,9 @@ export function RolesListDialog({ open, onOpenChange }: RolesListDialogProps) {
             <DialogFooter>
               <Button
                 onClick={() => setShowCreateDrawer(true)}
-                className='gap-1'
+                className="gap-1"
               >
-                <Plus className='h-4 w-4' />
+                <Plus className="h-4 w-4" />
                 新增角色
               </Button>
             </DialogFooter>
@@ -145,7 +145,7 @@ export function RolesListDialog({ open, onOpenChange }: RolesListDialogProps) {
       </Dialog>
 
       <RolesDialog
-        key='role-create'
+        key="role-create"
         open={showCreateDrawer}
         onOpenChange={(state: boolean) => {
           setShowCreateDrawer(state)

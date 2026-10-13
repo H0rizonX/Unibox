@@ -1,16 +1,16 @@
-import { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
-import { AxiosError } from 'axios'
 import {
   QueryCache,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { AxiosError } from 'axios'
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
 import { toast } from 'sonner'
 import { refreshAccessToken } from '@/api/refresh-token'
-import { useAuthStore } from '@/stores/auth-store'
 import { handleServerError } from '@/lib/handle-server-error'
+import { useAuthStore } from '@/stores/auth-store'
 import { DirectionProvider } from './context/direction-provider'
 import { FontProvider } from './context/font-provider'
 import { ThemeProvider } from './context/theme-provider'
@@ -24,9 +24,8 @@ const queryClient = new QueryClient({
     queries: {
       retry: (failureCount, error) => {
         // eslint-disable-next-line no-console
-        if (import.meta.env.DEV) console.log({ failureCount, error })
-
-        if (failureCount >= 0 && import.meta.env.DEV) return false
+        if (import.meta.env.DEV)
+          if (failureCount >= 0 && import.meta.env.DEV) return false
         if (failureCount > 3 && import.meta.env.PROD) return false
 
         return !(

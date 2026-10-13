@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { useAuthStore } from '@/stores/auth-store'
-import useDialogState from '@/hooks/use-dialog-state'
+import { SignOutDialog } from '@/components/sign-out-dialog'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,7 +12,8 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { SignOutDialog } from '@/components/sign-out-dialog'
+import useDialogState from '@/hooks/use-dialog-state'
+import { useAuthStore } from '@/stores/auth-store'
 
 export function ProfileDropdown() {
   const [open, setOpen] = useDialogState()
@@ -26,18 +26,18 @@ export function ProfileDropdown() {
     <>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
-            <Avatar className='h-8 w-8'>
-              <AvatarImage src='/avatars/01.png' alt={displayName} />
+          <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+            <Avatar className="h-8 w-8">
+              <AvatarImage src="/avatars/01.png" alt={displayName} />
               <AvatarFallback>{initials}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className='w-56' align='end' forceMount>
-          <DropdownMenuLabel className='font-normal'>
-            <div className='flex flex-col gap-1.5'>
-              <p className='text-sm leading-none font-medium'>{displayName}</p>
-              <p className='text-xs leading-none text-muted-foreground'>
+        <DropdownMenuContent className="w-56" align="end" forceMount>
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col gap-1.5">
+              <p className="text-sm leading-none font-medium">{displayName}</p>
+              <p className="text-xs leading-none text-muted-foreground">
                 {email}
               </p>
             </div>
@@ -45,19 +45,19 @@ export function ProfileDropdown() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem asChild>
-              <Link to='/settings'>
+              <Link to="/settings">
                 个人资料
                 <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to='/settings'>
+              <Link to="/settings">
                 账单
                 <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to='/settings'>
+              <Link to="/settings">
                 设置
                 <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
               </Link>
@@ -65,9 +65,9 @@ export function ProfileDropdown() {
             <DropdownMenuItem>新建团队</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem variant='destructive' onClick={() => setOpen(true)}>
+          <DropdownMenuItem variant="destructive" onClick={() => setOpen(true)}>
             退出登录
-            <DropdownMenuShortcut className='text-current'>
+            <DropdownMenuShortcut className="text-current">
               ⇧⌘Q
             </DropdownMenuShortcut>
           </DropdownMenuItem>

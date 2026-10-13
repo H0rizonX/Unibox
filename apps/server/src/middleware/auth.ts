@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express'
-import { prisma } from '../lib/prisma.js'
 import { forbidden, unauthorized } from '../lib/errors.js'
-import { verifyToken, type JwtPayload } from '../lib/jwt.js'
+import { type JwtPayload, verifyToken } from '../lib/jwt.js'
+import { prisma } from '../lib/prisma.js'
 
 export type AuthRequest = Request & {
   user?: JwtPayload

@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react'
 import {
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -9,10 +6,13 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
+  type VisibilityState,
 } from '@tanstack/react-table'
-import { cn } from '@/lib/utils'
-import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
+import { useEffect, useState } from 'react'
+import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
+import { EmptyState } from '@/components/empty-state'
 import {
   Table,
   TableBody,
@@ -21,10 +21,10 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { DataTablePagination, DataTableToolbar } from '@/components/data-table'
-import { EmptyState } from '@/components/empty-state'
+import { type NavigateFn, useTableUrlState } from '@/hooks/use-table-url-state'
+import { cn } from '@/lib/utils'
 import { roles, statuses } from '../data/data'
-import { type User } from '../data/schema'
+import type { User } from '../data/schema'
 import { DataTableBulkActions } from './data-table-bulk-actions'
 import { usersColumns as columns } from './users-columns'
 import { useUsers } from './users-provider'
@@ -126,8 +126,8 @@ export function UsersTable({
     >
       <DataTableToolbar
         table={table}
-        searchPlaceholder='筛选用户...'
-        searchKey='username'
+        searchPlaceholder="筛选用户..."
+        searchKey="username"
         filters={[
           {
             columnId: 'status',
@@ -141,11 +141,11 @@ export function UsersTable({
           },
         ]}
       />
-      <div className='overflow-hidden rounded-md border'>
+      <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className='group/row'>
+              <TableRow key={headerGroup.id} className="group/row">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead
@@ -174,7 +174,7 @@ export function UsersTable({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className='h-24 text-center'
+                  className="h-24 text-center"
                 >
                   加载中...
                 </TableCell>
@@ -184,7 +184,7 @@ export function UsersTable({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && 'selected'}
-                  className='group/row'
+                  className="group/row"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
@@ -208,17 +208,17 @@ export function UsersTable({
                 <TableCell colSpan={columns.length}>
                   {hasFilters ? (
                     <EmptyState
-                      variant='users'
+                      variant="users"
                       compact
-                      title='没有匹配的用户'
-                      description='尝试调整筛选条件或清除过滤器。'
+                      title="没有匹配的用户"
+                      description="尝试调整筛选条件或清除过滤器。"
                     />
                   ) : (
                     <EmptyState
-                      variant='users'
+                      variant="users"
                       compact
-                      title='还没有用户'
-                      description='添加或邀请用户来开始使用。'
+                      title="还没有用户"
+                      description="添加或邀请用户来开始使用。"
                       action={{
                         label: '添加用户',
                         onClick: () => setOpen('add'),
@@ -235,7 +235,7 @@ export function UsersTable({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} className='mt-auto' />
+      <DataTablePagination table={table} className="mt-auto" />
       <DataTableBulkActions table={table} />
     </div>
   )

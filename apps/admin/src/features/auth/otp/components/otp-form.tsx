@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as authApi from '@/api/auth'
-import { useAuthStore } from '@/stores/auth-store'
-import { handleServerError } from '@/lib/handle-server-error'
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -20,9 +17,12 @@ import {
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSlot,
   InputOTPSeparator,
+  InputOTPSlot,
 } from '@/components/ui/input-otp'
+import { handleServerError } from '@/lib/handle-server-error'
+import { cn } from '@/lib/utils'
+import { useAuthStore } from '@/stores/auth-store'
 
 const EMAIL_RATE_LIMIT_SECONDS = 60
 
@@ -165,10 +165,10 @@ export function OtpForm({
       >
         <FormField
           control={form.control}
-          name='otp'
+          name="otp"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className='sr-only'>验证码</FormLabel>
+              <FormLabel className="sr-only">验证码</FormLabel>
               <FormControl>
                 <InputOTP
                   maxLength={6}
@@ -195,13 +195,13 @@ export function OtpForm({
             </FormItem>
           )}
         />
-        <Button className='mt-2' disabled={otp.length < 6 || isLoading}>
+        <Button className="mt-2" disabled={otp.length < 6 || isLoading}>
           {purpose === 'registration' ? '验证邮箱' : '继续重置密码'}
         </Button>
         <Button
-          type='button'
-          variant='ghost'
-          className='text-sm'
+          type="button"
+          variant="ghost"
+          className="text-sm"
           disabled={isResending || !email || countdown > 0}
           onClick={handleResend}
         >

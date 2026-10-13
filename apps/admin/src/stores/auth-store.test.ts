@@ -1,5 +1,5 @@
-import { clearCookies } from '@/test-utils/cookies'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { clearCookies } from '@/test-utils/cookies'
 
 async function importAuthStore() {
   const { useAuthStore } = await import('./auth-store')

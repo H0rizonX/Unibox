@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
-import { useAuthStore } from '@/stores/auth-store'
-import { Button } from '@/components/ui/button'
 import { ProfileDropdown } from '@/components/profile-dropdown'
+import { Button } from '@/components/ui/button'
+import { useAuthStore } from '@/stores/auth-store'
 
 export function UserNav() {
   const accessToken = useAuthStore((state) => state.auth.accessToken)
@@ -11,12 +11,12 @@ export function UserNav() {
   }
 
   return (
-    <div className='flex items-center gap-2'>
-      <Button variant='ghost' size='sm' asChild>
-        <Link to='/sign-in'>登录</Link>
+    <div className="flex items-center gap-2">
+      <Button variant="ghost" size="sm" asChild>
+        <Link to="/sign-in">登录</Link>
       </Button>
-      <Button size='sm' asChild>
-        <Link to='/sign-up'>注册</Link>
+      <Button size="sm" asChild>
+        <Link to="/sign-up">注册</Link>
       </Button>
     </div>
   )

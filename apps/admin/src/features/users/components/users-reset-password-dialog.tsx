@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
-import { KeyRound, Copy, Check } from 'lucide-react'
+import { Check, Copy, KeyRound } from 'lucide-react'
+import { useState } from 'react'
 import { toast } from 'sonner'
 import {
   AlertDialog,
@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { type User, DEFAULT_RESET_PASSWORD } from '../api/schema'
+import { DEFAULT_RESET_PASSWORD, type User } from '../api/schema'
 import { resetPassword } from '../utils/user-actions'
 
 type UsersResetPasswordDialogProps = {
@@ -88,25 +88,25 @@ export function UsersResetPasswordDialog({
         {!result ? (
           <>
             <AlertDialogHeader>
-              <AlertDialogTitle className='flex items-center gap-2'>
-                <KeyRound className='h-5 w-5 text-amber-500' />
+              <AlertDialogTitle className="flex items-center gap-2">
+                <KeyRound className="h-5 w-5 text-amber-500" />
                 确认重置密码
               </AlertDialogTitle>
-              <AlertDialogDescription className='space-y-2 pt-2'>
+              <AlertDialogDescription className="space-y-2 pt-2">
                 <p>
                   即将重置用户{' '}
-                  <span className='font-semibold text-foreground'>
+                  <span className="font-semibold text-foreground">
                     {currentRow?.username}
                   </span>{' '}
                   的密码。
                 </p>
-                <div className='rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200'>
-                  <p className='font-medium'>⚠️ 业务规则说明</p>
-                  <ul className='mt-1 list-disc space-y-0.5 pl-5'>
+                <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+                  <p className="font-medium">⚠️ 业务规则说明</p>
+                  <ul className="mt-1 list-disc space-y-0.5 pl-5">
                     <li>管理员无权自定义用户密码</li>
                     <li>
                       密码将统一重置为默认密码{' '}
-                      <Badge variant='outline' className='font-mono'>
+                      <Badge variant="outline" className="font-mono">
                         {DEFAULT_RESET_PASSWORD}
                       </Badge>
                     </li>
@@ -131,61 +131,61 @@ export function UsersResetPasswordDialog({
         ) : (
           <>
             <AlertDialogHeader>
-              <AlertDialogTitle className='flex items-center gap-2 text-green-600 dark:text-green-500'>
-                <Check className='h-5 w-5' />
+              <AlertDialogTitle className="flex items-center gap-2 text-green-600 dark:text-green-500">
+                <Check className="h-5 w-5" />
                 密码重置成功
               </AlertDialogTitle>
             </AlertDialogHeader>
-            <Card className='border-green-200 dark:border-green-900'>
-              <CardHeader className='pb-3'>
-                <CardTitle className='text-sm font-medium text-muted-foreground'>
+            <Card className="border-green-200 dark:border-green-900">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
                   用户凭证
                 </CardTitle>
                 <CardDescription>请将以下信息安全地通知用户</CardDescription>
               </CardHeader>
-              <CardContent className='space-y-4'>
-                <div className='grid grid-cols-3 items-center gap-3'>
-                  <Label className='text-right text-muted-foreground'>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-3 items-center gap-3">
+                  <Label className="text-right text-muted-foreground">
                     用户名
                   </Label>
-                  <div className='col-span-2 font-medium'>
+                  <div className="col-span-2 font-medium">
                     {currentRow?.username}
                   </div>
                 </div>
-                <div className='grid grid-cols-3 items-center gap-3'>
-                  <Label className='text-right text-muted-foreground'>
+                <div className="grid grid-cols-3 items-center gap-3">
+                  <Label className="text-right text-muted-foreground">
                     邮箱
                   </Label>
-                  <div className='col-span-2 font-medium'>
+                  <div className="col-span-2 font-medium">
                     {currentRow?.email}
                   </div>
                 </div>
-                <div className='grid grid-cols-3 items-center gap-3'>
-                  <Label className='text-right text-muted-foreground'>
+                <div className="grid grid-cols-3 items-center gap-3">
+                  <Label className="text-right text-muted-foreground">
                     临时密码
                   </Label>
-                  <div className='col-span-2 flex items-center gap-2'>
+                  <div className="col-span-2 flex items-center gap-2">
                     <Input
                       readOnly
                       value={result.defaultPassword}
-                      className='font-mono tracking-wider'
+                      className="font-mono tracking-wider"
                     />
                     <Button
-                      type='button'
-                      size='icon'
-                      variant='outline'
+                      type="button"
+                      size="icon"
+                      variant="outline"
                       onClick={handleCopyPassword}
-                      title='复制密码'
+                      title="复制密码"
                     >
                       {copied ? (
-                        <Check className='h-4 w-4 text-green-500' />
+                        <Check className="h-4 w-4 text-green-500" />
                       ) : (
-                        <Copy className='h-4 w-4' />
+                        <Copy className="h-4 w-4" />
                       )}
                     </Button>
                   </div>
                 </div>
-                <p className='rounded-md bg-muted p-2 text-xs text-muted-foreground'>
+                <p className="rounded-md bg-muted p-2 text-xs text-muted-foreground">
                   💡 建议用户首次使用默认密码登录后，立即在「设置 →
                   安全」中修改密码。
                 </p>

@@ -1,12 +1,11 @@
-import { useEffect } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as settingsApi from '@/api/settings'
-import { handleServerError } from '@/lib/handle-server-error'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -20,6 +19,7 @@ import {
 } from '@/components/ui/form'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Switch } from '@/components/ui/switch'
+import { handleServerError } from '@/lib/handle-server-error'
 
 const notificationsFormSchema = z.object({
   type: z.enum(['all', 'mentions', 'none'], {
@@ -73,37 +73,37 @@ export function NotificationsForm() {
             handleServerError(error)
           }
         })}
-        className='space-y-8'
+        className="space-y-8"
       >
         <FormField
           control={form.control}
-          name='type'
+          name="type"
           render={({ field }) => (
-            <FormItem className='relative space-y-3'>
+            <FormItem className="relative space-y-3">
               <FormLabel>通知我关于...</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className='flex flex-col gap-2'
+                  className="flex flex-col gap-2"
                 >
-                  <FormItem className='flex items-center'>
+                  <FormItem className="flex items-center">
                     <FormControl>
-                      <RadioGroupItem value='all' />
+                      <RadioGroupItem value="all" />
                     </FormControl>
-                    <FormLabel className='font-normal'>所有新消息</FormLabel>
+                    <FormLabel className="font-normal">所有新消息</FormLabel>
                   </FormItem>
-                  <FormItem className='flex items-center'>
+                  <FormItem className="flex items-center">
                     <FormControl>
-                      <RadioGroupItem value='mentions' />
+                      <RadioGroupItem value="mentions" />
                     </FormControl>
-                    <FormLabel className='font-normal'>私信和提及</FormLabel>
+                    <FormLabel className="font-normal">私信和提及</FormLabel>
                   </FormItem>
-                  <FormItem className='flex items-center'>
+                  <FormItem className="flex items-center">
                     <FormControl>
-                      <RadioGroupItem value='none' />
+                      <RadioGroupItem value="none" />
                     </FormControl>
-                    <FormLabel className='font-normal'>不通知</FormLabel>
+                    <FormLabel className="font-normal">不通知</FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
@@ -111,16 +111,16 @@ export function NotificationsForm() {
             </FormItem>
           )}
         />
-        <div className='relative'>
-          <h3 className='mb-4 text-lg font-medium'>邮件通知</h3>
-          <div className='space-y-4'>
+        <div className="relative">
+          <h3 className="mb-4 text-lg font-medium">邮件通知</h3>
+          <div className="space-y-4">
             <FormField
               control={form.control}
-              name='communication_emails'
+              name="communication_emails"
               render={({ field }) => (
-                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
-                  <div className='space-y-0.5'>
-                    <FormLabel className='text-base'>通信邮件</FormLabel>
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-base">通信邮件</FormLabel>
                     <FormDescription>接收有关账户活动的邮件。</FormDescription>
                   </div>
                   <FormControl>
@@ -134,11 +134,11 @@ export function NotificationsForm() {
             />
             <FormField
               control={form.control}
-              name='marketing_emails'
+              name="marketing_emails"
               render={({ field }) => (
-                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
-                  <div className='space-y-0.5'>
-                    <FormLabel className='text-base'>营销邮件</FormLabel>
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-base">营销邮件</FormLabel>
                     <FormDescription>
                       接收有关新产品、功能等的邮件。
                     </FormDescription>
@@ -154,11 +154,11 @@ export function NotificationsForm() {
             />
             <FormField
               control={form.control}
-              name='social_emails'
+              name="social_emails"
               render={({ field }) => (
-                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
-                  <div className='space-y-0.5'>
-                    <FormLabel className='text-base'>社交邮件</FormLabel>
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-base">社交邮件</FormLabel>
                     <FormDescription>
                       接收好友请求、关注等邮件。
                     </FormDescription>
@@ -174,11 +174,11 @@ export function NotificationsForm() {
             />
             <FormField
               control={form.control}
-              name='security_emails'
+              name="security_emails"
               render={({ field }) => (
-                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
-                  <div className='space-y-0.5'>
-                    <FormLabel className='text-base'>安全邮件</FormLabel>
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-base">安全邮件</FormLabel>
                     <FormDescription>
                       接收有关账户活动和安全的邮件。
                     </FormDescription>
@@ -198,22 +198,22 @@ export function NotificationsForm() {
         </div>
         <FormField
           control={form.control}
-          name='mobile'
+          name="mobile"
           render={({ field }) => (
-            <FormItem className='relative flex flex-row items-start'>
+            <FormItem className="relative flex flex-row items-start">
               <FormControl>
                 <Checkbox
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <div className='space-y-1 leading-none'>
+              <div className="space-y-1 leading-none">
                 <FormLabel>为移动设备使用不同的设置</FormLabel>
                 <FormDescription>
                   您可以在{' '}
                   <Link
-                    to='/settings'
-                    className='underline decoration-dashed underline-offset-4 hover:decoration-solid'
+                    to="/settings"
+                    className="underline decoration-dashed underline-offset-4 hover:decoration-solid"
                   >
                     移动设置
                   </Link>{' '}
@@ -223,7 +223,7 @@ export function NotificationsForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>更新通知</Button>
+        <Button type="submit">更新通知</Button>
       </form>
     </Form>
   )

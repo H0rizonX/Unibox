@@ -17,9 +17,9 @@ type ResetPasswordProps = {
 export function ResetPassword({ resetToken }: ResetPasswordProps) {
   return (
     <AuthLayout>
-      <Card className='max-w-sm gap-4 sm:min-w-sm'>
+      <Card className="max-w-sm gap-4 sm:min-w-sm">
         <CardHeader>
-          <CardTitle className='text-lg tracking-tight'>设置新密码</CardTitle>
+          <CardTitle className="text-lg tracking-tight">设置新密码</CardTitle>
           <CardDescription>
             请输入您的新密码， <br /> 完成后即可使用新密码登录。
           </CardDescription>
@@ -28,10 +28,10 @@ export function ResetPassword({ resetToken }: ResetPasswordProps) {
           <ResetPasswordForm resetToken={resetToken} />
         </CardContent>
         <CardFooter>
-          <p className='mx-auto px-8 text-center text-sm text-balance text-muted-foreground'>
+          <p className="mx-auto px-8 text-center text-sm text-balance text-muted-foreground">
             <Link
-              to='/sign-in'
-              className='underline underline-offset-4 hover:text-primary'
+              to="/sign-in"
+              className="underline underline-offset-4 hover:text-primary"
             >
               返回登录
             </Link>

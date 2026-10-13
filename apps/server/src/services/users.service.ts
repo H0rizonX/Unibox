@@ -1,19 +1,19 @@
-import bcrypt from 'bcryptjs'
 import type { Prisma } from '@prisma/client'
-import { prisma } from '../lib/prisma.js'
+import bcrypt from 'bcryptjs'
+import type { z } from 'zod'
 import { badRequest, conflict, forbidden, notFound } from '../lib/errors.js'
 import {
   buildMeta,
   parseArrayParam,
   parsePagination,
 } from '../lib/pagination.js'
+import { prisma } from '../lib/prisma.js'
 import { toUserResponse } from '../lib/serializers.js'
 import type {
   createUserSchema,
   inviteUserSchema,
   updateUserSchema,
 } from '../validators/schemas.js'
-import type { z } from 'zod'
 
 type ListUsersQuery = {
   page?: unknown

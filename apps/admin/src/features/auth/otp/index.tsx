@@ -19,9 +19,9 @@ export function Otp() {
 
   return (
     <AuthLayout>
-      <Card className='max-w-md gap-4'>
+      <Card className="max-w-md gap-4">
         <CardHeader>
-          <CardTitle className='text-base tracking-tight'>
+          <CardTitle className="text-base tracking-tight">
             {isRegistration ? '验证邮箱' : '重置密码'}
           </CardTitle>
           <CardDescription>
@@ -34,13 +34,13 @@ export function Otp() {
           <OtpForm email={email} purpose={purpose} />
         </CardContent>
         <CardFooter>
-          <p className='px-8 text-center text-sm text-muted-foreground'>
+          <p className="px-8 text-center text-sm text-muted-foreground">
             {isRegistration ? (
               <>
                 已有账户？{' '}
                 <Link
-                  to='/sign-in'
-                  className='underline underline-offset-4 hover:text-primary'
+                  to="/sign-in"
+                  className="underline underline-offset-4 hover:text-primary"
                 >
                   登录
                 </Link>
@@ -49,8 +49,8 @@ export function Otp() {
               <>
                 想起密码了？{' '}
                 <Link
-                  to='/sign-in'
-                  className='underline underline-offset-4 hover:text-primary'
+                  to="/sign-in"
+                  className="underline underline-offset-4 hover:text-primary"
                 >
                   返回登录
                 </Link>

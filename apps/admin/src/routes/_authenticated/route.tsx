@@ -1,8 +1,8 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import { refreshAccessToken } from '@/api/refresh-token'
-import { useAuthStore } from '@/stores/auth-store'
-import { isTokenExpired, shouldRefreshToken } from '@/lib/token'
 import { AuthenticatedLayout } from '@/components/layout/authenticated-layout'
+import { isTokenExpired, shouldRefreshToken } from '@/lib/token'
+import { useAuthStore } from '@/stores/auth-store'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async ({ location }) => {

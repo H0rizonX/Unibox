@@ -1,18 +1,18 @@
 import { Router } from 'express'
-import { asyncHandler } from '../middleware/error-handler.js'
+import { routeParam } from '../lib/route-param.js'
 import {
+  type AuthRequest,
   authenticate,
   requireRoles,
-  type AuthRequest,
 } from '../middleware/auth.js'
+import { asyncHandler } from '../middleware/error-handler.js'
+import * as usersService from '../services/users.service.js'
 import {
   bulkDeleteSchema,
   createUserSchema,
   inviteUserSchema,
   updateUserSchema,
 } from '../validators/schemas.js'
-import * as usersService from '../services/users.service.js'
-import { routeParam } from '../lib/route-param.js'
 
 export const usersRouter = Router()
 

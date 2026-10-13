@@ -11,7 +11,7 @@ export function Pupil({
 }: PupilProps) {
   return (
     <div
-      className='pupil rounded-full'
+      className="pupil rounded-full"
       data-max-distance={maxDistance}
       style={{
         width: size,

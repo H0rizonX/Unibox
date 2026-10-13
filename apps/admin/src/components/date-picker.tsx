@@ -23,22 +23,22 @@ export function DatePicker({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant='outline'
+          variant="outline"
           data-empty={!selected}
-          className='w-60 justify-start text-start font-normal data-[empty=true]:text-muted-foreground'
+          className="w-60 justify-start text-start font-normal data-[empty=true]:text-muted-foreground"
         >
           {selected ? (
             format(selected, 'yyyy年M月d日')
           ) : (
             <span>{placeholder}</span>
           )}
-          <CalendarIcon className='ms-auto h-4 w-4 opacity-50' />
+          <CalendarIcon className="ms-auto h-4 w-4 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0'>
+      <PopoverContent className="w-auto p-0">
         <Calendar
-          mode='single'
-          captionLayout='dropdown'
+          mode="single"
+          captionLayout="dropdown"
           selected={selected}
           onSelect={onSelect}
           disabled={(date: Date) =>

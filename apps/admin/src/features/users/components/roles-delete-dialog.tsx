@@ -1,8 +1,7 @@
 'use client'
 
+import type { Role } from '@/api/roles'
 import * as rolesApi from '@/api/roles'
-import { type Role } from '@/api/roles'
-import { handleServerError } from '@/lib/handle-server-error'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -12,6 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { handleServerError } from '@/lib/handle-server-error'
 
 type RolesDeleteDialogProps = {
   currentRow: Role
@@ -38,19 +38,19 @@ export function RolesDeleteDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className='sm:max-w-md'>
-        <DialogHeader className='text-start'>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="text-start">
           <DialogTitle>删除角色</DialogTitle>
           <DialogDescription>
             确定要删除角色 <strong>{currentRow.label}</strong> 吗？
             此操作不可撤销。
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className='gap-2'>
-          <Button variant='destructive' onClick={handleDelete}>
+        <DialogFooter className="gap-2">
+          <Button variant="destructive" onClick={handleDelete}>
             删除
           </Button>
-          <Button variant='outline' onClick={() => onOpenChange(false)}>
+          <Button variant="outline" onClick={() => onOpenChange(false)}>
             取消
           </Button>
         </DialogFooter>

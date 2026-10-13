@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router'
 import { Menu } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -8,6 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { cn } from '@/lib/utils'
 
 type TopNavProps = React.HTMLAttributes<HTMLElement> & {
   links: {
@@ -24,15 +24,15 @@ export function TopNav({ className, links, ...props }: TopNavProps) {
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button
-            size='icon'
-            variant='outline'
+            size="icon"
+            variant="outline"
             className={cn('md:size-7 lg:hidden', className)}
           >
             <Menu />
-            <span className='sr-only'>切换导航菜单</span>
+            <span className="sr-only">切换导航菜单</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent side='bottom' align='start'>
+        <DropdownMenuContent side="bottom" align="start">
           {links.map(({ title, href, isActive, disabled }) => (
             <DropdownMenuItem key={`${title}-${href}`} asChild>
               <Link

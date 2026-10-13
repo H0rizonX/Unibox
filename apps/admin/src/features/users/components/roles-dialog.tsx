@@ -1,14 +1,13 @@
 'use client'
 
-import { useEffect, useMemo } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
+import { useEffect, useMemo } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
+import type { Role } from '@/api/roles'
 import * as rolesApi from '@/api/roles'
-import { type Role } from '@/api/roles'
-import { handleServerError } from '@/lib/handle-server-error'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -30,6 +29,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet'
+import { handleServerError } from '@/lib/handle-server-error'
 
 const roleFormSchema = z.object({
   name: z
@@ -146,8 +146,8 @@ export function RolesDialog({
         onOpenChange(state)
       }}
     >
-      <SheetContent className='flex flex-col sm:max-w-lg'>
-        <SheetHeader className='pb-0 text-start'>
+      <SheetContent className="flex flex-col sm:max-w-lg">
+        <SheetHeader className="pb-0 text-start">
           <SheetTitle>{isEdit ? '编辑角色' : '新增角色'}</SheetTitle>
           <SheetDescription>
             {isEdit ? '在此更新角色信息。' : '在此创建新角色并配置权限。'}
@@ -156,24 +156,24 @@ export function RolesDialog({
         </SheetHeader>
         <Form {...form}>
           <form
-            id='role-form'
+            id="role-form"
             onSubmit={form.handleSubmit(onSubmit)}
-            className='flex-1 space-y-6 overflow-y-auto px-4'
+            className="flex-1 space-y-6 overflow-y-auto px-4"
           >
             {isSystemRole && (
-              <div className='rounded-md border border-destructive/50 bg-destructive/10 p-3 text-sm text-destructive'>
+              <div className="rounded-md border border-destructive/50 bg-destructive/10 p-3 text-sm text-destructive">
                 系统角色（superadmin、admin）不可编辑。
               </div>
             )}
             <FormField
               control={form.control}
-              name='name'
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>角色名称</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder='例如：editor'
+                      placeholder="例如：editor"
                       disabled={isSystemRole}
                       {...field}
                     />
@@ -184,13 +184,13 @@ export function RolesDialog({
             />
             <FormField
               control={form.control}
-              name='label'
+              name="label"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>显示名称</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder='例如：编辑者'
+                      placeholder="例如：编辑者"
                       disabled={isSystemRole}
                       {...field}
                     />
@@ -201,13 +201,13 @@ export function RolesDialog({
             />
             <FormField
               control={form.control}
-              name='description'
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>描述</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder='角色用途说明'
+                      placeholder="角色用途说明"
                       disabled={isSystemRole}
                       {...field}
                     />
@@ -219,22 +219,22 @@ export function RolesDialog({
             <Separator />
             <FormField
               control={form.control}
-              name='permissions'
+              name="permissions"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-base'>权限配置</FormLabel>
-                  <div className='space-y-4 rounded-md border p-4'>
+                  <FormLabel className="text-base">权限配置</FormLabel>
+                  <div className="space-y-4 rounded-md border p-4">
                     {Object.entries(groupedPermissions).map(
                       ([group, perms]) => (
                         <div key={group}>
-                          <h4 className='mb-3 text-sm font-medium text-muted-foreground'>
+                          <h4 className="mb-3 text-sm font-medium text-muted-foreground">
                             {group}
                           </h4>
-                          <div className='grid grid-cols-2 gap-x-4 gap-y-2'>
+                          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                             {perms.map((perm) => (
                               <label
                                 key={perm.value}
-                                className='flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 hover:bg-muted'
+                                className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 hover:bg-muted"
                               >
                                 <Checkbox
                                   checked={field.value.includes(perm.value)}
@@ -254,7 +254,7 @@ export function RolesDialog({
                                     }
                                   }}
                                 />
-                                <span className='text-sm'>{perm.label}</span>
+                                <span className="text-sm">{perm.label}</span>
                               </label>
                             ))}
                           </div>
@@ -268,11 +268,11 @@ export function RolesDialog({
             />
           </form>
         </Form>
-        <SheetFooter className='gap-2'>
+        <SheetFooter className="gap-2">
           <SheetClose asChild>
-            <Button variant='outline'>取消</Button>
+            <Button variant="outline">取消</Button>
           </SheetClose>
-          <Button type='submit' form='role-form' disabled={isSystemRole}>
+          <Button type="submit" form="role-form" disabled={isSystemRole}>
             保存更改
           </Button>
         </SheetFooter>

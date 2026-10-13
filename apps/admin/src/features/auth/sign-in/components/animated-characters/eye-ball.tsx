@@ -15,7 +15,7 @@ export function EyeBall({
 }: EyeBallProps) {
   return (
     <div
-      className='eyeball flex items-center justify-center overflow-hidden rounded-full'
+      className="eyeball flex items-center justify-center overflow-hidden rounded-full"
       data-max-distance={maxDistance}
       style={{
         width: size,
@@ -25,7 +25,7 @@ export function EyeBall({
       }}
     >
       <div
-        className='eyeball-pupil rounded-full'
+        className="eyeball-pupil rounded-full"
         style={{
           width: pupilSize,
           height: pupilSize,

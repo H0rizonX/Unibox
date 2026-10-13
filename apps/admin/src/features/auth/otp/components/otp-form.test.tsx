@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render, type RenderResult } from 'vitest-browser-react'
 import { type Locator, userEvent } from 'vitest/browser'
+import { type RenderResult, render } from 'vitest-browser-react'
 import { OtpForm } from './otp-form'
 
 const navigate = vi.fn()
@@ -51,7 +51,7 @@ describe('OtpForm', () => {
   beforeEach(async () => {
     vi.clearAllMocks()
 
-    screen = await render(<OtpForm email='a@b.com' purpose='registration' />)
+    screen = await render(<OtpForm email="a@b.com" purpose="registration" />)
     otpInput = screen.getByLabelText(/^验证码$/i)
     verifyButton = screen.getByRole('button', { name: /^验证邮箱$/i })
   })

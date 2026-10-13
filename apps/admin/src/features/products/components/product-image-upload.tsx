@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ImagePlus, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { ACCEPTED_IMAGE_TYPES, MAX_IMAGES } from '../data/data'
 
 type ProductImageUploadProps = {
@@ -73,29 +73,29 @@ export function ProductImageUpload({
   const canAddMore = value.length < MAX_IMAGES
 
   return (
-    <div className='space-y-3'>
+    <div className="space-y-3">
       {previews.length > 0 && (
-        <div className='grid grid-cols-2 gap-3 sm:grid-cols-3'>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {previews.map((item, index) => (
             <div
               key={`${item.file.name}-${item.file.size}-${index}`}
-              className='group relative aspect-square overflow-hidden rounded-lg border bg-muted'
+              className="group relative aspect-square overflow-hidden rounded-lg border bg-muted"
             >
               <img
                 src={item.url}
                 alt={item.file.name}
-                className='h-full w-full object-cover'
+                className="h-full w-full object-cover"
               />
               <Button
-                type='button'
-                variant='destructive'
-                size='icon'
-                className='absolute end-1 top-1 h-7 w-7 opacity-0 transition-opacity group-hover:opacity-100'
+                type="button"
+                variant="destructive"
+                size="icon"
+                className="absolute end-1 top-1 h-7 w-7 opacity-0 transition-opacity group-hover:opacity-100"
                 onClick={() => handleRemove(index)}
                 disabled={disabled}
               >
-                <X className='h-4 w-4' />
-                <span className='sr-only'>删除图片</span>
+                <X className="h-4 w-4" />
+                <span className="sr-only">删除图片</span>
               </Button>
             </div>
           ))}
@@ -104,7 +104,7 @@ export function ProductImageUpload({
 
       {canAddMore && (
         <div
-          role='button'
+          role="button"
           tabIndex={disabled ? -1 : 0}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
@@ -124,15 +124,15 @@ export function ProductImageUpload({
             disabled && 'pointer-events-none opacity-50'
           )}
         >
-          <div className='flex size-12 items-center justify-center rounded-full bg-muted'>
-            <ImagePlus className='h-6 w-6 text-muted-foreground' />
+          <div className="flex size-12 items-center justify-center rounded-full bg-muted">
+            <ImagePlus className="h-6 w-6 text-muted-foreground" />
           </div>
-          <div className='space-y-1'>
-            <p className='text-sm font-medium'>点击或拖拽图片到此处上传</p>
-            <p className='text-xs text-muted-foreground'>
+          <div className="space-y-1">
+            <p className="text-sm font-medium">点击或拖拽图片到此处上传</p>
+            <p className="text-xs text-muted-foreground">
               支持 JPEG、PNG、WebP，单张不超过 5MB，最多 {MAX_IMAGES} 张
             </p>
-            <p className='text-xs text-muted-foreground'>
+            <p className="text-xs text-muted-foreground">
               已上传 {value.length}/{MAX_IMAGES}
             </p>
           </div>
@@ -141,10 +141,10 @@ export function ProductImageUpload({
 
       <input
         ref={inputRef}
-        type='file'
+        type="file"
         accept={ACCEPTED_IMAGE_TYPES.join(',')}
         multiple
-        className='hidden'
+        className="hidden"
         disabled={disabled}
         onChange={(event) => {
           if (event.target.files) {

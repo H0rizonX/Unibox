@@ -1,7 +1,7 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -63,27 +63,27 @@ export function DisplayForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(() => toast.success('显示设置已保存。'))}
-        className='space-y-8'
+        className="space-y-8"
       >
         <FormField
           control={form.control}
-          name='items'
+          name="items"
           render={() => (
             <FormItem>
-              <div className='mb-4'>
-                <FormLabel className='text-base'>侧边栏</FormLabel>
+              <div className="mb-4">
+                <FormLabel className="text-base">侧边栏</FormLabel>
                 <FormDescription>选择要在侧边栏中显示的项目。</FormDescription>
               </div>
               {items.map((item) => (
                 <FormField
                   key={item.id}
                   control={form.control}
-                  name='items'
+                  name="items"
                   render={({ field }) => {
                     return (
                       <FormItem
                         key={item.id}
-                        className='flex flex-row items-start'
+                        className="flex flex-row items-start"
                       >
                         <FormControl>
                           <Checkbox
@@ -99,7 +99,7 @@ export function DisplayForm() {
                             }}
                           />
                         </FormControl>
-                        <FormLabel className='font-normal'>
+                        <FormLabel className="font-normal">
                           {item.label}
                         </FormLabel>
                       </FormItem>
@@ -111,7 +111,7 @@ export function DisplayForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>更新显示</Button>
+        <Button type="submit">更新显示</Button>
       </form>
     </Form>
   )

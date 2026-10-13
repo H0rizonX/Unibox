@@ -1,13 +1,13 @@
 import { Router } from 'express'
-import { asyncHandler } from '../middleware/error-handler.js'
+import { routeParam } from '../lib/route-param.js'
 import {
+  type AuthRequest,
   authenticate,
   requireRoles,
-  type AuthRequest,
 } from '../middleware/auth.js'
-import { createRoleSchema, updateRoleSchema } from '../validators/schemas.js'
+import { asyncHandler } from '../middleware/error-handler.js'
 import * as rolesService from '../services/roles.service.js'
-import { routeParam } from '../lib/route-param.js'
+import { createRoleSchema, updateRoleSchema } from '../validators/schemas.js'
 
 export const rolesRouter = Router()
 

@@ -1,12 +1,13 @@
 'use client'
 
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as usersApi from '@/api/users'
-import { handleServerError } from '@/lib/handle-server-error'
+import { PasswordInput } from '@/components/password-input'
+import { SelectDropdown } from '@/components/select-dropdown'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -26,9 +27,8 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { PasswordInput } from '@/components/password-input'
-import { SelectDropdown } from '@/components/select-dropdown'
-import { type User, DEFAULT_RESET_PASSWORD } from '../api/schema'
+import { handleServerError } from '@/lib/handle-server-error'
+import { DEFAULT_RESET_PASSWORD, type User } from '../api/schema'
 import { roles } from '../data/data'
 
 /**
@@ -178,17 +178,17 @@ export function UsersActionDialog({
         onOpenChange(state)
       }}
     >
-      <DialogContent className='sm:max-w-lg'>
-        <DialogHeader className='text-start'>
+      <DialogContent className="sm:max-w-lg">
+        <DialogHeader className="text-start">
           <DialogTitle>{isEdit ? '编辑用户' : '添加用户'}</DialogTitle>
           <DialogDescription>
             {isEdit ? (
               <>
                 <span>在此更新用户基本信息。</span>
-                <div className='mt-2 rounded-md border border-blue-200 bg-blue-50 p-2 text-xs text-blue-800 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-200'>
+                <div className="mt-2 rounded-md border border-blue-200 bg-blue-50 p-2 text-xs text-blue-800 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-200">
                   ℹ️
                   管理员无法直接修改用户密码。如需重置密码，请关闭此窗口后在操作菜单中选择「重置密码」，密码将统一重置为默认密码{' '}
-                  <Badge variant='outline' className='font-mono'>
+                  <Badge variant="outline" className="font-mono">
                     {DEFAULT_RESET_PASSWORD}
                   </Badge>
                 </div>
@@ -200,121 +200,121 @@ export function UsersActionDialog({
             )}
           </DialogDescription>
         </DialogHeader>
-        <div className='h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3'>
+        <div className="h-105 w-[calc(100%+0.75rem)] overflow-y-auto py-1 pe-3">
           <Form {...form}>
             <form
-              id='user-form'
+              id="user-form"
               onSubmit={onSubmit}
-              className='space-y-4 px-0.5'
+              className="space-y-4 px-0.5"
             >
               <FormField
                 control={form.control}
-                name='firstName'
+                name="firstName"
                 render={({ field }) => (
-                  <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                    <FormLabel className='col-span-2 text-end'>名字</FormLabel>
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                    <FormLabel className="col-span-2 text-end">名字</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder='John'
-                        className='col-span-4'
-                        autoComplete='off'
+                        placeholder="John"
+                        className="col-span-4"
+                        autoComplete="off"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className='col-span-4 col-start-3' />
+                    <FormMessage className="col-span-4 col-start-3" />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name='lastName'
+                name="lastName"
                 render={({ field }) => (
-                  <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                    <FormLabel className='col-span-2 text-end'>姓氏</FormLabel>
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                    <FormLabel className="col-span-2 text-end">姓氏</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder='Doe'
-                        className='col-span-4'
-                        autoComplete='off'
+                        placeholder="Doe"
+                        className="col-span-4"
+                        autoComplete="off"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className='col-span-4 col-start-3' />
+                    <FormMessage className="col-span-4 col-start-3" />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name='username'
+                name="username"
                 render={({ field }) => (
-                  <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                    <FormLabel className='col-span-2 text-end'>
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                    <FormLabel className="col-span-2 text-end">
                       用户名
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder='john_doe'
-                        className='col-span-4'
+                        placeholder="john_doe"
+                        className="col-span-4"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className='col-span-4 col-start-3' />
+                    <FormMessage className="col-span-4 col-start-3" />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name='email'
+                name="email"
                 render={({ field }) => (
-                  <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                    <FormLabel className='col-span-2 text-end'>Email</FormLabel>
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                    <FormLabel className="col-span-2 text-end">Email</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder='john.doe@gmail.com'
-                        className='col-span-4'
+                        placeholder="john.doe@gmail.com"
+                        className="col-span-4"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className='col-span-4 col-start-3' />
+                    <FormMessage className="col-span-4 col-start-3" />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name='phoneNumber'
+                name="phoneNumber"
                 render={({ field }) => (
-                  <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                    <FormLabel className='col-span-2 text-end'>
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                    <FormLabel className="col-span-2 text-end">
                       电话号码
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder='+123456789'
-                        className='col-span-4'
+                        placeholder="+123456789"
+                        className="col-span-4"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className='col-span-4 col-start-3' />
+                    <FormMessage className="col-span-4 col-start-3" />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name='role'
+                name="role"
                 render={({ field }) => (
-                  <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                    <FormLabel className='col-span-2 text-end'>角色</FormLabel>
+                  <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                    <FormLabel className="col-span-2 text-end">角色</FormLabel>
                     <SelectDropdown
                       defaultValue={field.value}
                       onValueChange={field.onChange}
-                      placeholder='选择角色'
-                      className='col-span-4'
+                      placeholder="选择角色"
+                      className="col-span-4"
                       items={roles.map(({ label, value }) => ({
                         label,
                         value,
                       }))}
                     />
-                    <FormMessage className='col-span-4 col-start-3' />
+                    <FormMessage className="col-span-4 col-start-3" />
                   </FormItem>
                 )}
               />
@@ -324,39 +324,39 @@ export function UsersActionDialog({
                 <>
                   <FormField
                     control={createForm.control}
-                    name='password'
+                    name="password"
                     render={({ field }) => (
-                      <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                        <FormLabel className='col-span-2 text-end'>
+                      <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                        <FormLabel className="col-span-2 text-end">
                           初始密码
                         </FormLabel>
                         <FormControl>
                           <PasswordInput
-                            placeholder='e.g., S3cur3P@ssw0rd'
-                            className='col-span-4'
+                            placeholder="e.g., S3cur3P@ssw0rd"
+                            className="col-span-4"
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage className='col-span-4 col-start-3' />
+                        <FormMessage className="col-span-4 col-start-3" />
                       </FormItem>
                     )}
                   />
                   <FormField
                     control={createForm.control}
-                    name='confirmPassword'
+                    name="confirmPassword"
                     render={({ field }) => (
-                      <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                        <FormLabel className='col-span-2 text-end'>
+                      <FormItem className="grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1">
+                        <FormLabel className="col-span-2 text-end">
                           确认密码
                         </FormLabel>
                         <FormControl>
                           <PasswordInput
-                            placeholder='e.g., S3cur3P@ssw0rd'
-                            className='col-span-4'
+                            placeholder="e.g., S3cur3P@ssw0rd"
+                            className="col-span-4"
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage className='col-span-4 col-start-3' />
+                        <FormMessage className="col-span-4 col-start-3" />
                       </FormItem>
                     )}
                   />
@@ -366,7 +366,7 @@ export function UsersActionDialog({
           </Form>
         </div>
         <DialogFooter>
-          <Button type='submit' form='user-form'>
+          <Button type="submit" form="user-form">
             保存更改
           </Button>
         </DialogFooter>

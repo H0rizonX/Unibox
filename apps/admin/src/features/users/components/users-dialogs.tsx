@@ -3,7 +3,7 @@ import { RolesListDialog } from './roles-list-dialog'
 import { UsersActionDialog } from './users-action-dialog'
 import { UsersDeleteDialog } from './users-delete-dialog'
 import { UsersInviteDialog } from './users-invite-dialog'
-import { useUsers, type UsersDialogType } from './users-provider'
+import { type UsersDialogType, useUsers } from './users-provider'
 import { UsersResetPasswordDialog } from './users-reset-password-dialog'
 
 /**
@@ -53,19 +53,19 @@ export function UsersDialogs() {
     <>
       {/* 无行上下文的全局对话框 —— 直接按 open/close 切换 */}
       <UsersActionDialog
-        key='user-add'
+        key="user-add"
         open={open === 'add'}
         onOpenChange={(next) => setOpen(next ? 'add' : null)}
       />
 
       <UsersInviteDialog
-        key='user-invite'
+        key="user-invite"
         open={open === 'invite'}
         onOpenChange={(next) => setOpen(next ? 'invite' : null)}
       />
 
       <RolesListDialog
-        key='roles-list'
+        key="roles-list"
         open={open === 'roles'}
         onOpenChange={(next) => setOpen(next ? 'roles' : null)}
       />

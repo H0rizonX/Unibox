@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { useEffect, useRef } from 'react'
 import { EyeBall } from './eye-ball'
 import { Pupil } from './pupil'
 
@@ -521,12 +521,12 @@ export function AnimatedCharacters({
   return (
     <div
       ref={containerRef}
-      className='relative h-[400px] w-full max-w-[550px]'
+      className="relative h-[400px] w-full max-w-[550px]"
       aria-hidden
     >
       <div
         ref={purpleRef}
-        className='absolute bottom-0 left-[70px] z-1 w-[180px] origin-bottom'
+        className="absolute bottom-0 left-[70px] z-1 w-[180px] origin-bottom"
         style={{
           height: 400,
           backgroundColor: PURPLE_COLOR,
@@ -536,17 +536,17 @@ export function AnimatedCharacters({
       >
         <div
           ref={purpleFaceRef}
-          className='absolute flex gap-8'
+          className="absolute flex gap-8"
           style={{ left: 45, top: 40 }}
         >
-          <EyeBall size='18px' pupilSize='7px' maxDistance={5} />
-          <EyeBall size='18px' pupilSize='7px' maxDistance={5} />
+          <EyeBall size="18px" pupilSize="7px" maxDistance={5} />
+          <EyeBall size="18px" pupilSize="7px" maxDistance={5} />
         </div>
       </div>
 
       <div
         ref={blackRef}
-        className='absolute bottom-0 left-[240px] z-2 w-[120px] origin-bottom'
+        className="absolute bottom-0 left-[240px] z-2 w-[120px] origin-bottom"
         style={{
           height: 310,
           backgroundColor: BLACK_COLOR,
@@ -556,17 +556,17 @@ export function AnimatedCharacters({
       >
         <div
           ref={blackFaceRef}
-          className='absolute flex gap-6'
+          className="absolute flex gap-6"
           style={{ left: 26, top: 32 }}
         >
-          <EyeBall size='16px' pupilSize='6px' maxDistance={4} />
-          <EyeBall size='16px' pupilSize='6px' maxDistance={4} />
+          <EyeBall size="16px" pupilSize="6px" maxDistance={4} />
+          <EyeBall size="16px" pupilSize="6px" maxDistance={4} />
         </div>
       </div>
 
       <div
         ref={orangeRef}
-        className='absolute bottom-0 left-0 z-3 w-[240px] origin-bottom'
+        className="absolute bottom-0 left-0 z-3 w-[240px] origin-bottom"
         style={{
           height: 200,
           backgroundColor: ORANGE_COLOR,
@@ -576,17 +576,17 @@ export function AnimatedCharacters({
       >
         <div
           ref={orangeFaceRef}
-          className='absolute flex gap-8'
+          className="absolute flex gap-8"
           style={{ left: 82, top: 90 }}
         >
-          <Pupil size='12px' maxDistance={5} />
-          <Pupil size='12px' maxDistance={5} />
+          <Pupil size="12px" maxDistance={5} />
+          <Pupil size="12px" maxDistance={5} />
         </div>
       </div>
 
       <div
         ref={yellowRef}
-        className='absolute bottom-0 left-[310px] z-4 w-[140px] origin-bottom'
+        className="absolute bottom-0 left-[310px] z-4 w-[140px] origin-bottom"
         style={{
           height: 230,
           backgroundColor: YELLOW_COLOR,
@@ -596,15 +596,15 @@ export function AnimatedCharacters({
       >
         <div
           ref={yellowFaceRef}
-          className='absolute flex gap-6'
+          className="absolute flex gap-6"
           style={{ left: 52, top: 40 }}
         >
-          <Pupil size='12px' maxDistance={5} />
-          <Pupil size='12px' maxDistance={5} />
+          <Pupil size="12px" maxDistance={5} />
+          <Pupil size="12px" maxDistance={5} />
         </div>
         <div
           ref={yellowMouthRef}
-          className='absolute rounded-full bg-foreground'
+          className="absolute rounded-full bg-foreground"
           style={{ width: 80, height: 4, left: 40, top: 88 }}
         />
       </div>

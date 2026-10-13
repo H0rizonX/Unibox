@@ -1,11 +1,11 @@
-import { prisma } from '../lib/prisma.js'
+import type { z } from 'zod'
 import { notFound } from '../lib/errors.js'
+import { prisma } from '../lib/prisma.js'
 import type {
   accountSchema,
   notificationsSchema,
   profileSchema,
 } from '../validators/schemas.js'
-import type { z } from 'zod'
 
 export async function getProfile(userId: string) {
   let profile = await prisma.userProfile.findUnique({ where: { userId } })

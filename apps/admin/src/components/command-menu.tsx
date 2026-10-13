@@ -1,8 +1,6 @@
-import React from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { ArrowRight, ChevronRight, Laptop, Moon, Sun } from 'lucide-react'
-import { useSearch } from '@/context/search-provider'
-import { useTheme } from '@/context/theme-provider'
+import React from 'react'
 import {
   CommandDialog,
   CommandEmpty,
@@ -12,6 +10,8 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command'
+import { useSearch } from '@/context/search-provider'
+import { useTheme } from '@/context/theme-provider'
 import { sidebarData } from './layout/data/sidebar-data'
 import { ScrollArea } from './ui/scroll-area'
 
@@ -30,9 +30,9 @@ export function CommandMenu() {
 
   return (
     <CommandDialog modal open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder='输入命令或搜索...' />
+      <CommandInput placeholder="输入命令或搜索..." />
       <CommandList>
-        <ScrollArea type='hover' className='h-72 pe-1'>
+        <ScrollArea type="hover" className="h-72 pe-1">
           <CommandEmpty>未找到结果。</CommandEmpty>
           {sidebarData.navGroups.map((group) => (
             <CommandGroup key={group.title} heading={group.title}>
@@ -46,8 +46,8 @@ export function CommandMenu() {
                         runCommand(() => navigate({ to: navItem.url }))
                       }}
                     >
-                      <div className='flex size-4 items-center justify-center'>
-                        <ArrowRight className='size-2 text-muted-foreground/80' />
+                      <div className="flex size-4 items-center justify-center">
+                        <ArrowRight className="size-2 text-muted-foreground/80" />
                       </div>
                       {navItem.title}
                     </CommandItem>
@@ -61,8 +61,8 @@ export function CommandMenu() {
                       runCommand(() => navigate({ to: subItem.url }))
                     }}
                   >
-                    <div className='flex size-4 items-center justify-center'>
-                      <ArrowRight className='size-2 text-muted-foreground/80' />
+                    <div className="flex size-4 items-center justify-center">
+                      <ArrowRight className="size-2 text-muted-foreground/80" />
                     </div>
                     {navItem.title} <ChevronRight /> {subItem.title}
                   </CommandItem>
@@ -71,12 +71,12 @@ export function CommandMenu() {
             </CommandGroup>
           ))}
           <CommandSeparator />
-          <CommandGroup heading='主题'>
+          <CommandGroup heading="主题">
             <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
               <Sun /> <span>浅色</span>
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
-              <Moon className='scale-90' />
+              <Moon className="scale-90" />
               <span>深色</span>
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>

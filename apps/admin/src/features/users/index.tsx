@@ -33,17 +33,17 @@ export function Users() {
   return (
     <UsersProvider>
       <Header fixed>
-        <Search className='me-auto' />
+        <Search className="me-auto" />
         <ThemeSwitch />
         <ConfigDrawer />
         <UserNav />
       </Header>
 
-      <Main className='flex flex-1 flex-col gap-4 sm:gap-6'>
-        <div className='flex flex-wrap items-end justify-between gap-2'>
+      <Main className="flex flex-1 flex-col gap-4 sm:gap-6">
+        <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
-            <h2 className='text-2xl font-bold tracking-tight'>用户列表</h2>
-            <p className='text-muted-foreground'>在此管理用户及其角色。</p>
+            <h2 className="text-2xl font-bold tracking-tight">用户列表</h2>
+            <p className="text-muted-foreground">在此管理用户及其角色。</p>
           </div>
           <UsersPrimaryButtons />
         </div>

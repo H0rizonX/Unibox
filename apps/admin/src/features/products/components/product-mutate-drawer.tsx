@@ -1,7 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
+import { SelectDropdown } from '@/components/select-dropdown'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -22,14 +23,13 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet'
 import { Textarea } from '@/components/ui/textarea'
-import { SelectDropdown } from '@/components/select-dropdown'
 import { categories, productStatuses } from '../data/data'
 import {
+  type Product,
+  type ProductMutateFormValues,
   productCreateFormSchema,
   productMutateDefaultValues,
   productUpdateFormSchema,
-  type Product,
-  type ProductMutateFormValues,
 } from '../data/schema'
 import { ProductImageUpload } from './product-image-upload'
 
@@ -88,8 +88,8 @@ export function ProductMutateDrawer({
         if (!value) form.reset(productMutateDefaultValues)
       }}
     >
-      <SheetContent className='flex flex-col sm:max-w-2xl'>
-        <SheetHeader className='text-start'>
+      <SheetContent className="flex flex-col sm:max-w-2xl">
+        <SheetHeader className="text-start">
           <SheetTitle>{isUpdate ? '编辑商品' : '上传商品'}</SheetTitle>
           <SheetDescription>
             {isUpdate
@@ -100,13 +100,13 @@ export function ProductMutateDrawer({
 
         <Form {...form}>
           <form
-            id='product-mutate-form'
+            id="product-mutate-form"
             onSubmit={form.handleSubmit(onSubmit)}
-            className='flex-1 space-y-4 overflow-y-auto px-4 py-2'
+            className="flex-1 space-y-4 overflow-y-auto px-4 py-2"
           >
             <FormField
               control={form.control}
-              name='images'
+              name="images"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>商品图片{isUpdate ? '（选填）' : ''}</FormLabel>
@@ -123,12 +123,12 @@ export function ProductMutateDrawer({
 
             <FormField
               control={form.control}
-              name='name'
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>商品名称</FormLabel>
                   <FormControl>
-                    <Input placeholder='请输入商品名称' {...field} />
+                    <Input placeholder="请输入商品名称" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -137,16 +137,16 @@ export function ProductMutateDrawer({
 
             <FormField
               control={form.control}
-              name='price'
+              name="price"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>价格（元）</FormLabel>
                   <FormControl>
                     <Input
-                      type='number'
+                      type="number"
                       min={0}
                       step={0.01}
-                      placeholder='0.00'
+                      placeholder="0.00"
                       {...field}
                     />
                   </FormControl>
@@ -155,17 +155,17 @@ export function ProductMutateDrawer({
               )}
             />
 
-            <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <FormField
                 control={form.control}
-                name='category'
+                name="category"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>分类</FormLabel>
                     <SelectDropdown
                       defaultValue={field.value}
                       onValueChange={field.onChange}
-                      placeholder='选择分类'
+                      placeholder="选择分类"
                       items={categories.map((item) => ({
                         label: item.label,
                         value: item.value,
@@ -179,14 +179,14 @@ export function ProductMutateDrawer({
 
               <FormField
                 control={form.control}
-                name='status'
+                name="status"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>状态</FormLabel>
                     <SelectDropdown
                       defaultValue={field.value}
                       onValueChange={field.onChange}
-                      placeholder='选择状态'
+                      placeholder="选择状态"
                       items={productStatuses.map((item) => ({
                         label: item.label,
                         value: item.value,
@@ -201,14 +201,14 @@ export function ProductMutateDrawer({
 
             <FormField
               control={form.control}
-              name='description'
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>描述（选填）</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder='请输入商品描述'
-                      className='min-h-20 resize-y'
+                      placeholder="请输入商品描述"
+                      className="min-h-20 resize-y"
                       {...field}
                     />
                   </FormControl>
@@ -219,11 +219,11 @@ export function ProductMutateDrawer({
           </form>
         </Form>
 
-        <SheetFooter className='gap-2'>
+        <SheetFooter className="gap-2">
           <SheetClose asChild>
-            <Button variant='outline'>取消</Button>
+            <Button variant="outline">取消</Button>
           </SheetClose>
-          <Button type='submit' form='product-mutate-form'>
+          <Button type="submit" form="product-mutate-form">
             {isUpdate ? '保存' : '提交'}
           </Button>
         </SheetFooter>

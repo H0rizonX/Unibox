@@ -1,5 +1,3 @@
-import { useAuthStore } from '@/stores/auth-store'
-import { useLayout } from '@/context/layout-provider'
 import {
   Sidebar,
   SidebarContent,
@@ -7,6 +5,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar'
+import { useLayout } from '@/context/layout-provider'
+import { useAuthStore } from '@/stores/auth-store'
 // import { AppTitle } from './app-title'
 import { sidebarData } from './data/sidebar-data'
 import { NavGroup } from './nav-group'

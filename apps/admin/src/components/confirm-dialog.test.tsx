@@ -1,7 +1,7 @@
 import type { SubmitEvent } from 'react'
 import { describe, expect, it, vi } from 'vitest'
-import { render } from 'vitest-browser-react'
 import { userEvent } from 'vitest/browser'
+import { render } from 'vitest-browser-react'
 import { ConfirmDialog } from './confirm-dialog'
 
 describe('ConfirmDialog', () => {
@@ -10,8 +10,8 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Delete item'
-        desc='This action cannot be undone.'
+        title="Delete item"
+        desc="This action cannot be undone."
         handleConfirm={vi.fn()}
       />
     )
@@ -36,9 +36,9 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Sign out'
-        desc='Are you sure?'
-        confirmText='Sign out'
+        title="Sign out"
+        desc="Are you sure?"
+        confirmText="Sign out"
         handleConfirm={handleConfirm}
       />
     )
@@ -53,8 +53,8 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Danger'
-        desc='...'
+        title="Danger"
+        desc="..."
         disabled
         handleConfirm={handleConfirm}
       />
@@ -71,8 +71,8 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Loading'
-        desc='...'
+        title="Loading"
+        desc="..."
         isLoading
         handleConfirm={handleConfirm}
       />
@@ -87,10 +87,10 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Delete'
-        desc='...'
-        cancelBtnText='No'
-        confirmText='Yes'
+        title="Delete"
+        desc="..."
+        cancelBtnText="No"
+        confirmText="Yes"
         handleConfirm={vi.fn()}
       />
     )
@@ -108,14 +108,14 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Delete tasks'
-        form='tasks-multi-delete-form'
+        title="Delete tasks"
+        form="tasks-multi-delete-form"
         desc={
-          <form id='tasks-multi-delete-form' className='space-y-4'>
+          <form id="tasks-multi-delete-form" className="space-y-4">
             <p>Type DELETE to confirm.</p>
           </form>
         }
-        confirmText='Delete'
+        confirmText="Delete"
         destructive
       />
     )
@@ -136,18 +136,18 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Delete'
-        form='users-delete-form'
+        title="Delete"
+        form="users-delete-form"
         desc={
           <form
-            id='users-delete-form'
+            id="users-delete-form"
             onSubmit={handleFormSubmit}
-            className='space-y-4'
+            className="space-y-4"
           >
             <p>Confirm deletion.</p>
           </form>
         }
-        confirmText='Delete'
+        confirmText="Delete"
         destructive
       />
     )
@@ -166,18 +166,18 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Delete'
-        form='users-delete-form'
+        title="Delete"
+        form="users-delete-form"
         desc={
           <form
-            id='users-delete-form'
+            id="users-delete-form"
             onSubmit={handleFormSubmit}
-            className='space-y-4'
+            className="space-y-4"
           >
-            <input type='text' name='username' placeholder='username' />
+            <input type="text" name="username" placeholder="username" />
           </form>
         }
-        confirmText='Delete'
+        confirmText="Delete"
         destructive
       />
     )
@@ -196,15 +196,15 @@ describe('ConfirmDialog', () => {
       <ConfirmDialog
         open
         onOpenChange={vi.fn()}
-        title='Delete'
-        form='users-delete-form'
+        title="Delete"
+        form="users-delete-form"
         disabled
         desc={
-          <form id='users-delete-form' onSubmit={handleFormSubmit}>
+          <form id="users-delete-form" onSubmit={handleFormSubmit}>
             <p>Enter username to enable Delete.</p>
           </form>
         }
-        confirmText='Delete'
+        confirmText="Delete"
         destructive
       />
     )

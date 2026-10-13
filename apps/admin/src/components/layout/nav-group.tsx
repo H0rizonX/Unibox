@@ -1,7 +1,6 @@
-import { type ReactNode } from 'react'
 import { Link, useLocation } from '@tanstack/react-router'
 import { ChevronRight } from 'lucide-react'
-import { type SystemRole, useAuthorization } from '@/lib/authorization'
+import type { ReactNode } from 'react'
 import {
   Collapsible,
   CollapsibleContent,
@@ -18,6 +17,7 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import { type SystemRole, useAuthorization } from '@/lib/authorization'
 import { Badge } from '../ui/badge'
 import {
   DropdownMenu,
@@ -27,11 +27,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import {
-  type NavCollapsible,
-  type NavItem,
-  type NavLink,
-  type NavGroup as NavGroupProps,
+import type {
+  NavCollapsible,
+  NavGroup as NavGroupProps,
+  NavItem,
+  NavLink,
 } from './types'
 
 function canViewItem(
@@ -98,7 +98,7 @@ export function NavGroup({ title, items }: NavGroupProps) {
 }
 
 function NavBadge({ children }: { children: ReactNode }) {
-  return <Badge className='rounded-full px-1 py-0 text-xs'>{children}</Badge>
+  return <Badge className="rounded-full px-1 py-0 text-xs">{children}</Badge>
 }
 
 function SidebarMenuLink({ item, href }: { item: NavLink; href: string }) {
@@ -132,7 +132,7 @@ function SidebarMenuCollapsible({
     <Collapsible
       asChild
       defaultOpen={checkIsActive(href, item, true)}
-      className='group/collapsible'
+      className="group/collapsible"
     >
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
@@ -140,10 +140,10 @@ function SidebarMenuCollapsible({
             {item.icon && <item.icon />}
             <span>{item.title}</span>
             {item.badge && <NavBadge>{item.badge}</NavBadge>}
-            <ChevronRight className='ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 rtl:rotate-180' />
+            <ChevronRight className="ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 rtl:rotate-180" />
           </SidebarMenuButton>
         </CollapsibleTrigger>
-        <CollapsibleContent className='CollapsibleContent'>
+        <CollapsibleContent className="CollapsibleContent">
           <SidebarMenuSub>
             {item.items.map((subItem) => (
               <SidebarMenuSubItem key={subItem.title}>
@@ -184,10 +184,10 @@ function SidebarMenuCollapsedDropdown({
             {item.icon && <item.icon />}
             <span>{item.title}</span>
             {item.badge && <NavBadge>{item.badge}</NavBadge>}
-            <ChevronRight className='ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
+            <ChevronRight className="ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
           </SidebarMenuButton>
         </DropdownMenuTrigger>
-        <DropdownMenuContent side='right' align='start' sideOffset={4}>
+        <DropdownMenuContent side="right" align="start" sideOffset={4}>
           <DropdownMenuLabel>
             {item.title} {item.badge ? `(${item.badge})` : ''}
           </DropdownMenuLabel>
@@ -199,9 +199,9 @@ function SidebarMenuCollapsedDropdown({
                 className={`${checkIsActive(href, sub) ? 'bg-secondary' : ''}`}
               >
                 {sub.icon && <sub.icon />}
-                <span className='max-w-52 text-wrap'>{sub.title}</span>
+                <span className="max-w-52 text-wrap">{sub.title}</span>
                 {sub.badge && (
-                  <span className='ms-auto text-xs'>{sub.badge}</span>
+                  <span className="ms-auto text-xs">{sub.badge}</span>
                 )}
               </Link>
             </DropdownMenuItem>

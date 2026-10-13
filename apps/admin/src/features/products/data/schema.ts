@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import {
   ACCEPTED_IMAGE_TYPES,
+  categories,
   MAX_IMAGE_SIZE,
   MAX_IMAGES,
-  categories,
   productStatuses,
 } from './data'
 

@@ -1,6 +1,8 @@
 import { Router } from 'express'
+import { routeParam } from '../lib/route-param.js'
+import { type AuthRequest, authenticate } from '../middleware/auth.js'
 import { asyncHandler } from '../middleware/error-handler.js'
-import { authenticate, type AuthRequest } from '../middleware/auth.js'
+import * as settingsService from '../services/settings.service.js'
 import {
   accountSchema,
   createConversationSchema,
@@ -8,8 +10,6 @@ import {
   profileSchema,
   sendMessageSchema,
 } from '../validators/schemas.js'
-import * as settingsService from '../services/settings.service.js'
-import { routeParam } from '../lib/route-param.js'
 
 export const settingsRouter = Router()
 

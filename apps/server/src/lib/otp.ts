@@ -1,6 +1,6 @@
-import { redis } from './redis.js'
-import type { OtpPurpose } from './mail.js'
 import { env } from '../config/env.js'
+import type { OtpPurpose } from './mail.js'
+import { redis } from './redis.js'
 
 function otpKey(purpose: OtpPurpose, email: string): string {
   return `otp:${purpose}:${email.toLowerCase()}`

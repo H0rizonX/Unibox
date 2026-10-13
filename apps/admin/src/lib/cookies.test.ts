@@ -1,5 +1,5 @@
-import { clearCookies } from '@/test-utils/cookies'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { clearCookies } from '@/test-utils/cookies'
 import { getCookie, removeCookie, setCookie } from './cookies'
 
 const COOKIE_PREFIX = 'test_cookie_'

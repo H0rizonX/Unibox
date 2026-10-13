@@ -13,9 +13,9 @@ import { ForgotPasswordForm } from './components/forgot-password-form'
 export function ForgotPassword() {
   return (
     <AuthLayout>
-      <Card className='max-w-sm gap-4 sm:min-w-sm'>
+      <Card className="max-w-sm gap-4 sm:min-w-sm">
         <CardHeader>
-          <CardTitle className='text-lg tracking-tight'>忘记密码</CardTitle>
+          <CardTitle className="text-lg tracking-tight">忘记密码</CardTitle>
           <CardDescription>
             输入您注册的邮箱， <br /> 我们将发送验证码以重置密码。
           </CardDescription>
@@ -24,11 +24,11 @@ export function ForgotPassword() {
           <ForgotPasswordForm />
         </CardContent>
         <CardFooter>
-          <p className='mx-auto px-8 text-center text-sm text-balance text-muted-foreground'>
+          <p className="mx-auto px-8 text-center text-sm text-balance text-muted-foreground">
             还没有账户？{' '}
             <Link
-              to='/sign-up'
-              className='underline underline-offset-4 hover:text-primary'
+              to="/sign-up"
+              className="underline underline-offset-4 hover:text-primary"
             >
               注册
             </Link>

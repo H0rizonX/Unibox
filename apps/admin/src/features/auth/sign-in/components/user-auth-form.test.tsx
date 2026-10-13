@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render, type RenderResult } from 'vitest-browser-react'
 import { type Locator, userEvent } from 'vitest/browser'
+import { type RenderResult, render } from 'vitest-browser-react'
 import { UserAuthForm } from './user-auth-form'
 
 const FORM_MESSAGES = {
@@ -121,7 +121,7 @@ describe('UserAuthForm', () => {
     vi.clearAllMocks()
 
     const { getByRole, getByLabelText } = await render(
-      <UserAuthForm redirectTo='/settings' />
+      <UserAuthForm redirectTo="/settings" />
     )
 
     await userEvent.fill(getByRole('textbox', { name: /Email/i }), 'a@b.com')

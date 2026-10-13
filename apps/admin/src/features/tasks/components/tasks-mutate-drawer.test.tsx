@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { mockInvalidateQueries } from '@/test-utils/mock-query-client'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render } from 'vitest-browser-react'
 import { userEvent } from 'vitest/browser'
+import { render } from 'vitest-browser-react'
 import * as tasksApi from '@/api/tasks'
-import { type Task } from '../data/schema'
+import { mockInvalidateQueries } from '@/test-utils/mock-query-client'
+import type { Task } from '../data/schema'
 import { TasksMutateDrawer } from './tasks-mutate-drawer'
 
 vi.mock('@/api/tasks', () => ({
@@ -140,7 +140,7 @@ describe('TasksMutateDrawer', () => {
       const [open, setOpen] = useState(true)
       return (
         <>
-          <button type='button' onClick={() => setOpen(true)}>
+          <button type="button" onClick={() => setOpen(true)}>
             Reopen
           </button>
           <TasksMutateDrawer open={open} onOpenChange={setOpen} />

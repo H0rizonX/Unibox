@@ -1,9 +1,9 @@
-import express, { type Express } from 'express'
 import cors from 'cors'
+import express, { type Express } from 'express'
 import { env } from './config/env.js'
-import { apiRouter } from './routes/index.js'
 import { errorHandler } from './middleware/error-handler.js'
 import { responseMiddleware } from './middleware/response.js'
+import { apiRouter } from './routes/index.js'
 
 export function createApp(): Express {
   const app = express()

@@ -1,9 +1,9 @@
-import { type ColumnDef } from '@tanstack/react-table'
+import type { ColumnDef } from '@tanstack/react-table'
+import { DataTableColumnHeader } from '@/components/data-table'
 import { Badge } from '@/components/ui/badge'
 import { Checkbox } from '@/components/ui/checkbox'
-import { DataTableColumnHeader } from '@/components/data-table'
 import { labels, priorities, statuses } from '../data/data'
-import { type Task } from '../data/schema'
+import type { Task } from '../data/schema'
 import { DataTableRowActions } from './data-table-row-actions'
 
 export const tasksColumns: ColumnDef<Task>[] = [
@@ -16,16 +16,16 @@ export const tasksColumns: ColumnDef<Task>[] = [
           (table.getIsSomePageRowsSelected() && 'indeterminate')
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label='全选'
-        className='translate-y-0.5'
+        aria-label="全选"
+        className="translate-y-0.5"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label='选择行'
-        className='translate-y-0.5'
+        aria-label="选择行"
+        className="translate-y-0.5"
       />
     ),
     enableSorting: false,
@@ -34,16 +34,16 @@ export const tasksColumns: ColumnDef<Task>[] = [
   {
     accessorKey: 'id',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='任务' />
+      <DataTableColumnHeader column={column} title="任务" />
     ),
-    cell: ({ row }) => <div className='w-20'>{row.getValue('id')}</div>,
+    cell: ({ row }) => <div className="w-20">{row.getValue('id')}</div>,
     enableSorting: false,
     enableHiding: false,
   },
   {
     accessorKey: 'title',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='标题' />
+      <DataTableColumnHeader column={column} title="标题" />
     ),
     meta: {
       className: 'ps-1 max-w-0 w-2/3',
@@ -53,9 +53,9 @@ export const tasksColumns: ColumnDef<Task>[] = [
       const label = labels.find((label) => label.value === row.original.label)
 
       return (
-        <div className='flex space-x-2'>
-          {label && <Badge variant='outline'>{label.label}</Badge>}
-          <span className='truncate font-medium'>{row.getValue('title')}</span>
+        <div className="flex space-x-2">
+          {label && <Badge variant="outline">{label.label}</Badge>}
+          <span className="truncate font-medium">{row.getValue('title')}</span>
         </div>
       )
     },
@@ -63,7 +63,7 @@ export const tasksColumns: ColumnDef<Task>[] = [
   {
     accessorKey: 'status',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='状态' />
+      <DataTableColumnHeader column={column} title="状态" />
     ),
     meta: { className: 'ps-1', tdClassName: 'ps-4' },
     cell: ({ row }) => {
@@ -76,9 +76,9 @@ export const tasksColumns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className='flex w-25 items-center gap-2'>
+        <div className="flex w-25 items-center gap-2">
           {status.icon && (
-            <status.icon className='size-4 text-muted-foreground' />
+            <status.icon className="size-4 text-muted-foreground" />
           )}
           <span>{status.label}</span>
         </div>
@@ -91,7 +91,7 @@ export const tasksColumns: ColumnDef<Task>[] = [
   {
     accessorKey: 'priority',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='优先级' />
+      <DataTableColumnHeader column={column} title="优先级" />
     ),
     meta: { className: 'ps-1', tdClassName: 'ps-3' },
     cell: ({ row }) => {
@@ -104,9 +104,9 @@ export const tasksColumns: ColumnDef<Task>[] = [
       }
 
       return (
-        <div className='flex items-center gap-2'>
+        <div className="flex items-center gap-2">
           {priority.icon && (
-            <priority.icon className='size-4 text-muted-foreground' />
+            <priority.icon className="size-4 text-muted-foreground" />
           )}
           <span>{priority.label}</span>
         </div>

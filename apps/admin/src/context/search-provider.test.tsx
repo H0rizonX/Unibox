@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render, type RenderResult } from 'vitest-browser-react'
 import { userEvent } from 'vitest/browser'
+import { type RenderResult, render } from 'vitest-browser-react'
 import { SearchProvider } from '@/context/search-provider'
 
 const COMMAND_MENU_PLACEHOLDER = 'Type a command or search...'
@@ -87,22 +87,19 @@ describe('SearchProvider and CommandMenu', () => {
   it.each([
     ['Ctrl', 'Control'],
     ['Cmd', 'Meta'],
-  ] as const)(
-    'opens the command menu when %s + K is pressed',
-    async (_label, modifier) => {
-      const screen = await renderWithSearchProvider()
+  ] as const)('opens the command menu when %s + K is pressed', async (_label, modifier) => {
+    const screen = await renderWithSearchProvider()
 
-      await expect
-        .element(screen.getByPlaceholder(COMMAND_MENU_PLACEHOLDER))
-        .not.toBeInTheDocument()
+    await expect
+      .element(screen.getByPlaceholder(COMMAND_MENU_PLACEHOLDER))
+      .not.toBeInTheDocument()
 
-      await openCommandPalette(screen, modifier)
+    await openCommandPalette(screen, modifier)
 
-      await expect
-        .element(screen.getByPlaceholder(COMMAND_MENU_PLACEHOLDER))
-        .toBeInTheDocument()
-    }
-  )
+    await expect
+      .element(screen.getByPlaceholder(COMMAND_MENU_PLACEHOLDER))
+      .toBeInTheDocument()
+  })
 
   it('navigates to a top-level route and closes the palette when a nav item is selected', async () => {
     const screen = await renderWithSearchProvider()

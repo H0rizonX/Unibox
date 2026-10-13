@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { refreshAccessToken } from '@/api/refresh-token'
-import { useAuthStore } from '@/stores/auth-store'
 import {
   isTokenExpired,
   shouldRefreshToken,
   TOKEN_REFRESH_THRESHOLD_MS,
 } from '@/lib/token'
+import { useAuthStore } from '@/stores/auth-store'
 
 export function useTokenRefresh() {
   const accessToken = useAuthStore((s) => s.auth.accessToken)

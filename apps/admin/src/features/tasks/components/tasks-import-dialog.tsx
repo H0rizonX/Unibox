@@ -1,10 +1,9 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as tasksApi from '@/api/tasks'
-import { handleServerError } from '@/lib/handle-server-error'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -24,6 +23,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { handleServerError } from '@/lib/handle-server-error'
 
 const formSchema = z.object({
   file: z
@@ -78,25 +78,25 @@ export function TasksImportDialog({
         form.reset()
       }}
     >
-      <DialogContent className='gap-2 sm:max-w-sm'>
-        <DialogHeader className='text-start'>
+      <DialogContent className="gap-2 sm:max-w-sm">
+        <DialogHeader className="text-start">
           <DialogTitle>导入任务</DialogTitle>
           <DialogDescription>从 CSV 文件快速导入任务。</DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form id='task-import-form' onSubmit={form.handleSubmit(onSubmit)}>
+          <form id="task-import-form" onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
-              name='file'
+              name="file"
               render={() => (
-                <FormItem className='my-2'>
+                <FormItem className="my-2">
                   <FormLabel>文件</FormLabel>
                   <FormControl>
                     <Input
-                      type='file'
-                      accept='text/csv'
+                      type="file"
+                      accept="text/csv"
                       {...fileRef}
-                      className='h-8 py-0'
+                      className="h-8 py-0"
                     />
                   </FormControl>
                   <FormMessage />
@@ -105,11 +105,11 @@ export function TasksImportDialog({
             />
           </form>
         </Form>
-        <DialogFooter className='gap-2'>
+        <DialogFooter className="gap-2">
           <DialogClose asChild>
-            <Button variant='outline'>关闭</Button>
+            <Button variant="outline">关闭</Button>
           </DialogClose>
-          <Button type='submit' form='task-import-form'>
+          <Button type="submit" form="task-import-form">
             导入
           </Button>
         </DialogFooter>

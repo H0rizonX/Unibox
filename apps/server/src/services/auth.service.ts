@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import { prisma } from '../lib/prisma.js'
+import type { z } from 'zod'
 import { badRequest, conflict, notFound, unauthorized } from '../lib/errors.js'
 import {
   roleToArray,
@@ -10,6 +10,7 @@ import {
 } from '../lib/jwt.js'
 import { sendOtpEmail, sendPasswordChangedEmail } from '../lib/mail.js'
 import { saveOtp, verifyOtp as verifyOtpCode } from '../lib/otp.js'
+import { prisma } from '../lib/prisma.js'
 import { checkEmailRateLimit, setEmailRateLimit } from '../lib/redis.js'
 import type {
   changePasswordSchema,
@@ -20,7 +21,6 @@ import type {
   verifyEmailSchema,
   verifyResetOtpSchema,
 } from '../validators/schemas.js'
-import type { z } from 'zod'
 
 function generateOtp(): string {
   return String(Math.floor(100000 + Math.random() * 900000))

@@ -1,5 +1,5 @@
-import { Shield, UserCheck, Users, User } from 'lucide-react'
-import { type UserStatus } from './schema'
+import { Shield, User, UserCheck, Users } from 'lucide-react'
+import type { UserStatus } from './schema'
 
 export const statuses = [
   { label: '活跃', value: 'active' },

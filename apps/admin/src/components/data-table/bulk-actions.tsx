@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
-import { type Table } from '@tanstack/react-table'
+import type { Table } from '@tanstack/react-table'
 import { X } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { useEffect, useRef, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -10,6 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
 
 type DataTableBulkActionsProps<TData> = {
   table: Table<TData>
@@ -61,9 +61,7 @@ export function DataTableBulkActions<TData>({
     const buttons = toolbarRef.current?.querySelectorAll('button')
     if (!buttons) return
 
-    const currentIndex = Array.from(buttons).findIndex(
-      (button) => button === document.activeElement
-    )
+    const currentIndex = Array.from(buttons).indexOf(document.activeElement)
 
     switch (event.key) {
       case 'ArrowRight': {
@@ -127,19 +125,19 @@ export function DataTableBulkActions<TData>({
     <>
       {/* Live region for screen reader announcements */}
       <div
-        aria-live='polite'
-        aria-atomic='true'
-        className='sr-only'
-        role='status'
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+        role="status"
       >
         {announcement}
       </div>
 
       <div
         ref={toolbarRef}
-        role='toolbar'
+        role="toolbar"
         aria-label={`${selectedCount} 个已选${entityName}的批量操作`}
-        aria-describedby='bulk-actions-description'
+        aria-describedby="bulk-actions-description"
         tabIndex={-1}
         onKeyDown={handleKeyDown}
         className={cn(
@@ -159,15 +157,15 @@ export function DataTableBulkActions<TData>({
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                variant='outline'
-                size='icon'
+                variant="outline"
+                size="icon"
                 onClick={handleClearSelection}
-                className='size-6 rounded-full'
-                aria-label='清除选择'
-                title='清除选择 (Escape)'
+                className="size-6 rounded-full"
+                aria-label="清除选择"
+                title="清除选择 (Escape)"
               >
                 <X />
-                <span className='sr-only'>清除选择</span>
+                <span className="sr-only">清除选择</span>
               </Button>
             </TooltipTrigger>
             <TooltipContent>
@@ -176,32 +174,29 @@ export function DataTableBulkActions<TData>({
           </Tooltip>
 
           <Separator
-            className='h-5'
-            orientation='vertical'
-            aria-hidden='true'
+            className="h-5"
+            orientation="vertical"
+            aria-hidden="true"
           />
 
           <div
-            className='flex items-center gap-x-1 text-sm'
-            id='bulk-actions-description'
+            className="flex items-center gap-x-1 text-sm"
+            id="bulk-actions-description"
           >
             <Badge
-              variant='default'
-              className='min-w-8 rounded-lg'
+              variant="default"
+              className="min-w-8 rounded-lg"
               aria-label={`已选择 ${selectedCount} 个`}
             >
               {selectedCount}
             </Badge>{' '}
-            <span className='hidden sm:inline'>
-              {entityName}
-            </span>{' '}
-            已选择
+            <span className="hidden sm:inline">{entityName}</span> 已选择
           </div>
 
           <Separator
-            className='h-5'
-            orientation='vertical'
-            aria-hidden='true'
+            className="h-5"
+            orientation="vertical"
+            aria-hidden="true"
           />
 
           {children}

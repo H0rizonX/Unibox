@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { asyncHandler } from '../middleware/error-handler.js'
 import { authenticate } from '../middleware/auth.js'
+import { asyncHandler } from '../middleware/error-handler.js'
 import {
   getDashboardAnalytics,
   getDashboardOverview,

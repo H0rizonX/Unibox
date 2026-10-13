@@ -1,6 +1,6 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import './theme.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./theme.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -19,12 +19,12 @@
 
   /* Override Radix scroll locking for sticky headers */
   body[data-scroll-locked] {
-    overflow: unset !important;
+    overflow: unset;
   }
 
   /* Cursor pointer for buttons */
   button:not(:disabled),
-  [role='button']:not(:disabled) {
+  [role="button"]:not(:disabled) {
     cursor: pointer;
   }
 
@@ -33,7 +33,7 @@
     input,
     select,
     textarea {
-      font-size: 16px !important;
+      font-size: 16px;
     }
   }
 }
@@ -61,10 +61,10 @@
 .CollapsibleContent {
   overflow: hidden;
 }
-.CollapsibleContent[data-state='open'] {
+.CollapsibleContent[data-state="open"] {
   animation: slideDown 300ms ease-out;
 }
-.CollapsibleContent[data-state='closed'] {
+.CollapsibleContent[data-state="closed"] {
   animation: slideUp 300ms ease-out;
 }
 

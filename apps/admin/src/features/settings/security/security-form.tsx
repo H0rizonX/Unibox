@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2, ShieldCheck } from 'lucide-react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 import * as authApi from '@/api/auth'
-import { handleServerError } from '@/lib/handle-server-error'
+import { PasswordInput } from '@/components/password-input'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { PasswordInput } from '@/components/password-input'
+import { handleServerError } from '@/lib/handle-server-error'
 
 const formSchema = z
   .object({
@@ -67,15 +67,15 @@ export function SecurityForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name='currentPassword'
+          name="currentPassword"
           render={({ field }) => (
             <FormItem>
               <FormLabel>当前密码</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -83,12 +83,12 @@ export function SecurityForm() {
         />
         <FormField
           control={form.control}
-          name='newPassword'
+          name="newPassword"
           render={({ field }) => (
             <FormItem>
               <FormLabel>新密码</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput placeholder="********" {...field} />
               </FormControl>
               <FormDescription>密码至少需要 7 个字符。</FormDescription>
               <FormMessage />
@@ -97,19 +97,19 @@ export function SecurityForm() {
         />
         <FormField
           control={form.control}
-          name='confirmPassword'
+          name="confirmPassword"
           render={({ field }) => (
             <FormItem>
               <FormLabel>确认新密码</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type='submit' disabled={isLoading}>
-          {isLoading ? <Loader2 className='animate-spin' /> : <ShieldCheck />}
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? <Loader2 className="animate-spin" /> : <ShieldCheck />}
           更新密码
         </Button>
       </form>

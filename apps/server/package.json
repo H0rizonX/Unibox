@@ -7,10 +7,10 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
     "typecheck": "tsc --noEmit",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
@@ -36,7 +36,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@biomejs/biome": "2.4.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.3",
@@ -44,14 +44,9 @@
     "@types/multer": "^1.4.12",
     "@types/node": "^22.15.32",
     "@types/nodemailer": "^6.4.17",
-    "eslint": "^10.2.1",
-    "eslint-config-prettier": "^10.1.8",
-    "globals": "^17.5.0",
-    "prettier": "^3.8.3",
     "prisma": "^6.9.0",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.58.2"
+    "typescript": "^5.8.3"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useDialogState from '@/hooks/use-dialog-state'
-import { type User } from '../api/schema'
+import type { User } from '../api/schema'
 
 /**
  * 用户管理支持的对话框类型

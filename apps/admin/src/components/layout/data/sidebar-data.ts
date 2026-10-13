@@ -1,21 +1,21 @@
 import {
-  LayoutDashboard,
-  Monitor,
-  ListTodo,
-  HelpCircle,
-  Bell,
-  Palette,
-  Settings,
-  Wrench,
-  UserCog,
-  Users,
-  MessagesSquare,
   AudioWaveform,
+  Bell,
   Command,
   GalleryVerticalEnd,
+  HelpCircle,
+  LayoutDashboard,
+  ListTodo,
+  MessagesSquare,
+  Monitor,
   Package,
+  Palette,
+  Settings,
+  UserCog,
+  Users,
+  Wrench,
 } from 'lucide-react'
-import { type SidebarData } from '../types'
+import type { SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
   user: {

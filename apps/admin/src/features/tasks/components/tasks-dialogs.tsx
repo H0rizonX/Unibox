@@ -1,8 +1,8 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import * as tasksApi from '@/api/tasks'
-import { handleServerError } from '@/lib/handle-server-error'
 import { ConfirmDialog } from '@/components/confirm-dialog'
+import { handleServerError } from '@/lib/handle-server-error'
 import { TasksImportDialog } from './tasks-import-dialog'
 import { TasksMutateDrawer } from './tasks-mutate-drawer'
 import { useTasks } from './tasks-provider'
@@ -28,13 +28,13 @@ export function TasksDialogs() {
   return (
     <>
       <TasksMutateDrawer
-        key='task-create'
+        key="task-create"
         open={open === 'create'}
         onOpenChange={() => setOpen('create')}
       />
 
       <TasksImportDialog
-        key='tasks-import'
+        key="tasks-import"
         open={open === 'import'}
         onOpenChange={() => setOpen('import')}
       />
@@ -54,7 +54,7 @@ export function TasksDialogs() {
           />
 
           <ConfirmDialog
-            key='task-delete'
+            key="task-delete"
             destructive
             open={open === 'delete'}
             onOpenChange={() => {
@@ -64,7 +64,7 @@ export function TasksDialogs() {
               }, 500)
             }}
             handleConfirm={() => void handleDelete()}
-            className='max-w-md'
+            className="max-w-md"
             title={`删除任务 ${currentRow.id}？`}
             desc={
               <>
@@ -73,7 +73,7 @@ export function TasksDialogs() {
                 此操作无法撤销。
               </>
             }
-            confirmText='删除'
+            confirmText="删除"
           />
         </>
       )}

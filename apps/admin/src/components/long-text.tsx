@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react'
-import { cn } from '@/lib/utils'
 import {
   Popover,
   PopoverContent,
@@ -11,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
 
 type LongTextProps = {
   children: React.ReactNode
@@ -43,7 +43,7 @@ export function LongText({
 
   return (
     <>
-      <div className='hidden sm:block'>
+      <div className="hidden sm:block">
         <TooltipProvider delayDuration={0}>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -57,7 +57,7 @@ export function LongText({
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className='sm:hidden'>
+      <div className="sm:hidden">
         <Popover>
           <PopoverTrigger asChild>
             <div ref={refCallback} className={cn('truncate', className)}>
