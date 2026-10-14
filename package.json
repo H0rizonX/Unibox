@@ -6,6 +6,9 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:main": "turbo run dev --filter=@unibox/main",
+    "dev:server": "turbo run dev --filter=@unibox/server",
+    "dev:admin": "turbo run dev --filter=@unibox/admin",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "format": "turbo run format",
